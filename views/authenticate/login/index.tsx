@@ -3,7 +3,6 @@ import Link from "next/link";
 import Button from "@/components/button";
 import InputField from "@/components/input-field";
 import { FormEvent } from "react";
-import axios from "axios";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
