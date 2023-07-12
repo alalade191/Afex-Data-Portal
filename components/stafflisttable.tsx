@@ -1,5 +1,5 @@
 import React from "react";
-import ActiveTable from "./activetablestyle";
+import ActiveTable from "./activestafflisttablestyle";
 import { Table } from "@mantine/core";
 
 const StaffList = () => {
@@ -119,9 +119,9 @@ const StaffList = () => {
   ));
 
   return (
-    <Table>
-      <thead className="bg-[#F5F5F6] font-medium text-[16px] py-[20px] text-[#4A4C58]">
-        <tr className="border border-green-500 rounded-t">
+    <Table className="mt-3">
+      <thead className="bg-[#F5F5F6] font-medium text-base py-[15px] text-[#4A4C58]">
+        <tr className="">
           <th>
             {" "}
             <input type="checkbox" name="" id="" />{" "}

@@ -2,23 +2,41 @@ import Image from "next/image";
 import React from "react";
 import { useState } from "react";
 import { clsx } from "@mantine/core";
+import Link from "next/link";
 const DashboardSidebar = () => {
   interface Sidebar {
     image: string;
     text: string;
+    link: string;
   }
   const sidebarlist: Sidebar[] = [
-    { image: "/icons/home.svg", text: "Dashboard Overview" },
-    { image: "/icons/briefcase.svg", text: "Staff Management" },
-    { image: "/icons/people.svg", text: "Tribes" },
-    { image: "/icons/location.svg", text: "Office Address" },
+    {
+      image: "/icons/home.svg",
+      text: "Dashboard Overview",
+      link: "/overview",
+    },
+    {
+      image: "/icons/briefcase.svg",
+      text: "Staff Management",
+      link: "/staff-management",
+    },
+    { image: "/icons/people.svg", text: "Tribes", link: "/tribe" },
+    {
+      image: "/icons/location.svg",
+      text: "Office Address",
+      link: "/address",
+    },
 
     // { image: "/icons/user.svg", text: "Profile" },
     // { image: "/icons/logout.svg", text: "Logout" },
   ];
   const adminlist: Sidebar[] = [
-    { image: "/icons/user.svg", text: "Profile" },
-    { image: "/icons/logout.svg", text: "Logout" },
+    { image: "/icons/user.svg", text: "Profile", link: "/profile" },
+    {
+      image: "/icons/logout.svg",
+      text: "Logout",
+      link: "/landingpage",
+    },
   ];
   const [selected, setSelected] = useState(0);
   const [adminselect, setAdminselect] = useState(null);
@@ -50,7 +68,9 @@ const DashboardSidebar = () => {
                 />
               </figure>
               <div>
-                <p className="text-[14px] font-semibold">{list.text}</p>
+                <Link href={list.link}>
+                  <p className="text-[14px] font-semibold">{list.text}</p>
+                </Link>
               </div>
             </div>
           </div>
@@ -83,7 +103,9 @@ const DashboardSidebar = () => {
                 />
               </figure>
               <div>
-                <p className="text-[14px] font-semibold">{admin.text}</p>
+                <Link href={admin.link}>
+                  <p className="text-[14px] font-semibold">{admin.text}</p>
+                </Link>
               </div>
             </div>
           </div>

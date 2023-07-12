@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Cards from "../dashboardcards";
+import Link from "next/link";
 import DashboadTableList from "../dashboard-table";
 
 const DashboardOverview = () => {
@@ -13,7 +14,9 @@ const DashboardOverview = () => {
           Recently Uploaded Staff
         </h4>
         <div className="flex items-center  gap-2">
-          <p className="text-sm font-medium text-[#3045BC]">View all staff</p>
+          <p className="text-sm font-medium text-[#3045BC]">
+            <Link href={"/staff-management"}>View all staff</Link>
+          </p>
           <figure className="w-[10px] h-[10px]">
             <Image
               height={10}

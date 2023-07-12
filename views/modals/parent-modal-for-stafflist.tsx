@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import { Button, Group, Modal, Stepper } from "@mantine/core";
-import FirstStepper from "./firststepper";
 import Image from "next/image";
-import SecondStepper from "./secondstepper";
-import ThirdStepper from "./thirdstepper";
+import EditStaffListModal1 from "./edit-stafflist-modal1";
+import EditStaffListModal2 from "./edit-stafflist-modal2";
+import EditStaffListModal3 from "./edit-stafflist-modal3";
 
 interface IModalProps {
   opened: boolean;
@@ -13,8 +13,6 @@ interface IModalProps {
 
 export function CreateCard({ opened, close }: IModalProps) {
   const [active, setActive] = useState(0);
-
-  const [];
   const nextStep = () =>
     setActive((current) => (current < 2 ? current + 1 : current));
   const prevStep = () =>
@@ -72,15 +70,15 @@ export function CreateCard({ opened, close }: IModalProps) {
           }}
         >
           <Stepper.Step completedIcon={<span>1</span>}>
-            <FirstStepper />
+            <EditStaffListModal1 />
           </Stepper.Step>
 
           <Stepper.Step completedIcon={<span>2</span>}>
-            <SecondStepper />
+            <EditStaffListModal2 />
           </Stepper.Step>
 
           <Stepper.Step completedIcon={<span>3</span>}>
-            <ThirdStepper />
+            <EditStaffListModal3 />
           </Stepper.Step>
         </Stepper>
       </div>

@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Link from "next/link";
 import Button from "@/components/button";
 import InputField from "@/components/input-field";
 import { FormEvent } from "react";
+import { useRouter } from "next/router";
+import { AuthContext, IContextType } from "@/pages/_app";
+import { LoadingOverlay } from "@mantine/core";
+import PersonalStepper from "@/views/modals/personal-stepper";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { setAuthUser } = useContext(AuthContext) as IContextType;
   //  const[]= useState('')
+  const router = useRouter();
   const login = async () => {
+    setLoading(true);
     try {
       const resp = await fetch(
         "https://expertportal-production.up.railway.app/api/auth/login/",
@@ -20,13 +28,20 @@ const Login: React.FC = () => {
           body: JSON.stringify({ email, password }),
         }
       );
-      const data = resp.json();
+      const data = await resp.json();
+
+      setAuthUser(data);
       console.log(data);
+      localStorage.setItem("userlogin", JSON.stringify(data));
+      data.tokens.access && router.push("/dashboard");
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
+  // Handlesubmiit
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     login();
@@ -60,7 +75,7 @@ const Login: React.FC = () => {
         placeholder="*************"
       />
       <Link
-        href=""
+        href="/forgotpassword"
         className="text-base font-semibold font-switzer text-[#BF2018] w-[386px] ont-switzer text-end"
       >
         Forgot Password?
@@ -68,5 +83,6 @@ const Login: React.FC = () => {
       <Button text="Sign in" />
     </form>
   );
+  <LoadingOverlay visible={loading} overlayBlur={2} />;
 };
 export default Login;

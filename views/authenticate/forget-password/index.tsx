@@ -24,12 +24,15 @@ const ForgetPassword: React.FC = () => {
       <InputField
         htmlFor="email"
         label=""
+        onChange={""}
         name="email"
         type="email"
         placeholder="Enter email address"
       />
 
-      <Button text="Submit" />
+      <Link href={"/otpcode"}>
+        <Button text="Submit" />
+      </Link>
       <div className="flex items-center gap-3 pt-[12px]">
         <figure>
           <Image

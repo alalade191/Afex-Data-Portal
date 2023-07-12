@@ -6,7 +6,7 @@ import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import Link from "next/link";
 
-const FirstStepper = () => {
+const EditStaffListModal1 = () => {
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -150,4 +150,4 @@ const FirstStepper = () => {
   );
 };
 
-export default FirstStepper;
+export default EditStaffListModal1;

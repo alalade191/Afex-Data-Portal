@@ -1,10 +1,8 @@
+import ForgetPassword from "@/views/authenticate/forget-password";
 import Image from "next/image";
 import React from "react";
-import Otp from "@/views/authenticate/otp/index";
-import Login from "./login";
-import ForgetPassword from "./forget-password";
-import ResetPassword from "./reset-password";
-const Authentication: React.FC = () => {
+
+export default function ForgotPass() {
   return (
     <>
       <div className="w-screen bg-[url('/images/background.png')] bg-no-repeat bg-cover h-screen object-cover flex flex-col">
@@ -61,5 +59,4 @@ const Authentication: React.FC = () => {
       </div>
     </>
   );
-};
-export default Authentication;
+}

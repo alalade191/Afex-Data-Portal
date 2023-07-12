@@ -1,10 +1,8 @@
+import Login from "@/views/authenticate/login";
 import Image from "next/image";
 import React from "react";
-import Otp from "@/views/authenticate/otp/index";
-import Login from "./login";
-import ForgetPassword from "./forget-password";
-import ResetPassword from "./reset-password";
-const Authentication: React.FC = () => {
+
+export default function loginPage() {
   return (
     <>
       <div className="w-screen bg-[url('/images/background.png')] bg-no-repeat bg-cover h-screen object-cover flex flex-col">
@@ -51,8 +49,8 @@ const Authentication: React.FC = () => {
               style={{ boxShadow: "0px 4px 44px 0px rgba(0, 0, 0, 0.16)" }}
               className="w-[466px] bg-white rounded-2xl my-[50px]"
             >
-              {/* <Login /> */}
-              <ForgetPassword />
+              <Login />
+              {/* <ForgetPassword /> */}
               {/* <Otp /> */}
               {/* <ResetPassword /> */}
             </div>
@@ -61,5 +59,4 @@ const Authentication: React.FC = () => {
       </div>
     </>
   );
-};
-export default Authentication;
+}

@@ -91,7 +91,7 @@ const DashboadTableList: React.FC = () => {
           return (
             <div
               key={list.name}
-              className="px-[20px] py-[20px] flex  justify-between border-b text-[#4A4C58] leading-5 font-normal text-sm border-[#F0F0F1]"
+              className="px-[20px] py-[20px] flex items-center justify-between border-b text-[#4A4C58] leading-5 font-normal text-sm border-[#F0F0F1]"
             >
               <h3>{list.name}</h3>
               <h3>{list.email}</h3>

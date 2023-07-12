@@ -1,33 +1,28 @@
 import React from "react";
 import Export from "@/components/export";
-import FilterSearch from "@/components/filtersearch";
-import Image from "next/image";
 import { useDisclosure } from "@mantine/hooks";
-import { CreateCard } from "@/components/modal";
-import { Table } from "@mantine/core";
-import ActiveTable from "@/components/activestafflisttablestyle";
-import StaffList from "@/components/stafflisttable";
-import DeactivateCard from "@/components/deactivatemodal";
-import SucessCard from "@/components/sucessmodal";
-import PersonalStepper from "@/views/modals/personal-stepper";
+import Search from "@/components/search";
+import Tribemodal from "@/components/tribemodal";
+import TribeList from "@/components/tribelisttable";
+import Image from "next/image";
 
-const StaffManagement = () => {
+const Tribe = () => {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between">
         <div className="flex gap-3">
           <Export />
-          <FilterSearch />
+          <Search />
         </div>
         <button
-          onClick={open}
           className="text-sm text-white bg-[#283A9D] rounded-lg py-[6px] px-[24px] font-medium
              transition-transform duration-300 transform-gpu hover:scale-105"
+          onClick={open}
         >
-          Add member all
+          Create tribe
         </button>
-        <SucessCard opened={opened} close={close} />
+        <Tribemodal opened={opened} close={close} />
         {/* <DeactivateCard opened={opened} close={close} /> */}
       </div>
       <div className="border-t border-b border-[#D9DFE4] mt-6 pt-4 pb-1">
@@ -38,6 +33,9 @@ const StaffManagement = () => {
           </span>
         </div>
       </div>
+
+      {/* <TribeList /> */}
+      {/* update of staff listt */}
 
       <div className="flex flex-1 items-center justify-center">
         <div className="flex flex-col items-center justify-center">
@@ -52,11 +50,10 @@ const StaffManagement = () => {
           </figure>
           <div className="flex flex-col gap-2">
             <h3 className="font-semibold text-center text-2xl text-[#5E606A]">
-              Staff list empty
+              Tribe list empty
             </h3>
             <p className="font-normal text-sm text-[#5E606A] max-w-[260px] text-center">
-              You are yet to onboard any staff, a list of staff created will
-              appear here
+              You are yet to create any tribe
             </p>
           </div>
           <button
@@ -70,14 +67,13 @@ const StaffManagement = () => {
               src={"/icons/plus-icon.svg"}
               alt="iconplus"
             />
-            <span>Add new member</span>
+            <span>Create tribe</span>
           </button>
-          <CreateCard opened={opened} close={close} />
+          <Tribemodal opened={opened} close={close} />
         </div>
       </div>
-
       {/* <StaffList /> */}
     </div>
   );
 };
-export default StaffManagement;
+export default Tribe;

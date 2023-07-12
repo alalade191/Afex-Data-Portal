@@ -5,8 +5,9 @@ import { Group, Text, useMantineTheme, rem } from "@mantine/core";
 import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import Link from "next/link";
+import EditStaffListModal1 from "./edit-stafflist-modal1";
 
-const SecondStepper = () => {
+const EditStaffListModal2 = () => {
   return (
     <div>
       <div className="flex items-center justify-center gap-6">
@@ -158,4 +159,4 @@ const SecondStepper = () => {
   );
 };
 
-export default SecondStepper;
+export default EditStaffListModal2;

@@ -1,19 +1,11 @@
 import { useTheme } from "next-themes";
+import React, { useContext } from "react";
+import { AuthContext, IContextType } from "./_app";
 import Image from "next/image";
-import { useContext } from "react";
-import DashboardSidebar from "./dashboard-sidebar";
-import Cards from "./dashboardcards";
-import DashboadTableList from "./dashboard-table";
-import DashboardOverview from "./dashboard-overview";
-import AdminProfile from "./admin-profile";
-import Export from "@/components/export";
-import FilterSearch from "@/components/filtersearch";
-import StaffManagement from "./staff-management";
-import { AuthContext, IContextType } from "@/pages/_app";
-import Tribe from "./tribe";
-import Office from "./office";
+import DashboardSidebar from "@/views/dashboard/dashboard-sidebar";
+import Office from "@/views/dashboard/office";
 
-const DashBoard = () => {
+function Address() {
   const { theme, setTheme } = useTheme();
   const { authUser } = useContext(AuthContext) as IContextType;
   return (
@@ -83,15 +75,11 @@ const DashBoard = () => {
           <DashboardSidebar />
         </div>
         <div className="px-[28px] pt-[28px] bg-[#FDFDFD] ">
-          <DashboardOverview />
-          {/* <AdminProfile /> */}
-          {/* <StaffManagement /> */}
-          {/* <Tribe /> */}
-          {/* <Office /> */}
+          <Office />
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default DashBoard;
+export default Address;
