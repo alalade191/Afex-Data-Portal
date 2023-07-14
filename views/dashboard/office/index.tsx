@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Export from "@/components/export";
 import { useDisclosure } from "@mantine/hooks";
 import Search from "@/components/search";
@@ -8,6 +8,7 @@ import Image from "next/image";
 import Officemodal from "@/components/officemodal";
 import EditOfficemodal from "@/components/editofficemodal";
 import DeleteOfficemodal from "@/components/deleteofficemodal";
+import withAuth from "@/pages/routing-protection";
 
 const officeCards = [
   {
@@ -57,8 +58,41 @@ const officeCards = [
     image3: "/icons/delete-icon.svg",
   },
 ];
+
+interface IAddressList {
+  is_headquarter: boolean;
+  description: string;
+  edit_url: string;
+  detail_url: string;
+  delete_url: string;
+  city: string;
+}
 const Office = () => {
   const [opened, { open, close }] = useDisclosure(false);
+  const [view, setView] = useState<IAddressList[]>(null);
+
+  const viewdata = async () => {
+    const token = JSON.parse(localStorage.getItem("userlogin") as string)
+      ?.tokens?.access;
+    const res = await fetch(
+      "https://expertportal-production.up.railway.app/api/address/",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    // console.log(data);
+    setView(data.results);
+  };
+
+  useEffect(() => {
+    viewdata();
+  }, []);
+
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between">
@@ -83,29 +117,29 @@ const Office = () => {
         <div className="flex items-center gap-1 hover:border-b-[2px] hover:border-[#D9DFE4] w-[80px]">
           <p className="text-xsfont-medium text-[#4A4C58]">Address </p>
           <span className="h-[16px] rounded-full w-[16px] pl-1 flex items-center bg-[#F7F9FC] font-semibold text-xs text-[#8F9198]">
-            06
+            {view?.length}
           </span>
         </div>
       </div>
 
       <div className="grid grid-cols-3 mt-3 gap-8">
-        {officeCards.map((item, i) => (
+        {view?.map((item, i) => (
           <div key={i}>
             <div className=" border border-[#C9DEF8] rounded-lg h-[183px] flex flex-col">
               <div className="w-full h-1 rounded-t-[4px] bg-[#3851DD] px-6"></div>
               <div className=" p-2">
                 <div className="flex items-center justify-between border-b border-[#8F9198] pb-2">
                   <h3 className="font-bold text-base text-[#4A4C58]">
-                    {item.office}
+                    {item?.city}
                   </h3>
                   <div className="flex items-center gap-3">
-                    <Image
+                    {/* <Image
                       height={27}
                       width={60}
                       src={item.image1}
                       alt="nigeria"
-                    />
-                    {i === 0 ? (
+                    /> */}
+                    {item.is_headquarter ? (
                       <Image
                         height={27}
                         width={38}
@@ -125,7 +159,7 @@ const Office = () => {
                       <Image
                         height={24}
                         width={24}
-                        src={item.image2}
+                        src="/icons/edit-icon.svg"
                         alt="edit-icons"
                         onClick={open}
                       />
@@ -135,7 +169,7 @@ const Office = () => {
                       <Image
                         height={24}
                         width={24}
-                        src={item.image3}
+                        src="/icons/delete-icon.svg"
                         alt="delete"
                         onClick={open}
                       />
@@ -152,4 +186,4 @@ const Office = () => {
     </div>
   );
 };
-export default Office;
+export default withAuth(Office);

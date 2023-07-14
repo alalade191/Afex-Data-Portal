@@ -5,8 +5,13 @@ import { Group, Text, useMantineTheme, rem } from "@mantine/core";
 import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import Link from "next/link";
+import { Idata } from "./parent-modal-for-stafflist";
 
-const EditStaffListModal1 = () => {
+interface Data {
+  firstEdit: Idata;
+  SetFirstEdit: (val: Idata) => void;
+}
+const EditStaffListModal1 = ({ firstEdit, SetFirstEdit }: Data) => {
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -69,6 +74,13 @@ const EditStaffListModal1 = () => {
         <TextInput
           placeholder="Enter Name"
           label="First Name"
+          value={firstEdit.first_name}
+          onChange={(e) => {
+            SetFirstEdit({
+              ...firstEdit,
+              first_name: e.target.value,
+            });
+          }}
           classNames={{
             root: "flex flex-col gap-3 mt-5",
             input:
@@ -80,6 +92,13 @@ const EditStaffListModal1 = () => {
         <TextInput
           placeholder="Enter Name"
           label="Last Name"
+          value={firstEdit.last_name}
+          onChange={(e) => {
+            SetFirstEdit({
+              ...firstEdit,
+              last_name: e.target.value,
+            });
+          }}
           classNames={{
             root: "flex flex-col gap-3 mt-5",
             input:
@@ -93,6 +112,13 @@ const EditStaffListModal1 = () => {
         <TextInput
           placeholder="Enter Name"
           label="Middle Name (OPtional)"
+          value={firstEdit.middle_name}
+          onChange={(e) => {
+            SetFirstEdit({
+              ...firstEdit,
+              middle_name: e.target.value,
+            });
+          }}
           classNames={{
             root: "flex flex-col gap-3 mt-5",
             input:
@@ -104,6 +130,13 @@ const EditStaffListModal1 = () => {
         <TextInput
           placeholder="Enter Mobile Number"
           label="Phone Number"
+          value={firstEdit.phone_number}
+          onChange={(e) => {
+            SetFirstEdit({
+              ...firstEdit,
+              phone_number: e.target.value,
+            });
+          }}
           classNames={{
             root: "flex flex-col gap-3 mt-5",
             input:
@@ -117,6 +150,13 @@ const EditStaffListModal1 = () => {
         <Select
           label="Gender"
           placeholder="Select Gender"
+          value={firstEdit.gender}
+          onChange={(value) => {
+            SetFirstEdit({
+              ...firstEdit,
+              gender: value as string,
+            });
+          }}
           data={[
             { value: "male", label: "Male" },
             { value: "female", label: "Female" },
@@ -132,6 +172,13 @@ const EditStaffListModal1 = () => {
         <Select
           label="Marital Status"
           placeholder="Select Marital Status"
+          value={firstEdit.marital_status}
+          onChange={(value) => {
+            SetFirstEdit({
+              ...firstEdit,
+              first_name: value as string,
+            });
+          }}
           data={[
             { value: "divorced", label: "Divorced" },
             { value: "married", label: "Married" },

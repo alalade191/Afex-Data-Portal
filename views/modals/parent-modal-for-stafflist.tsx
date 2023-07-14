@@ -11,8 +11,47 @@ interface IModalProps {
   close: () => void;
 }
 
+export interface Idata {
+  first_name: string;
+  last_name: string;
+  middle_name: string;
+  phone_number: string;
+  gender: string;
+  marital_status: string;
+  email_address: string;
+  taggable: string;
+  tribe: string;
+  squard_unit: string;
+  designation: string;
+  phone: string;
+  region: string;
+  city_address: string;
+  relationship: string;
+  username: string;
+}
+
 export function CreateCard({ opened, close }: IModalProps) {
   const [active, setActive] = useState(0);
+
+  const [editstepdata, SetEditstepdata] = useState<Idata>({
+    first_name: "",
+    last_name: "",
+    middle_name: "",
+    phone_number: "",
+    gender: "",
+    marital_status: "",
+    email_address: "",
+    taggable: "",
+    tribe: "",
+    squard_unit: "",
+    designation: "",
+    phone: "",
+    region: "",
+    city_address: "",
+    relationship: "",
+    username: "",
+  });
+
   const nextStep = () =>
     setActive((current) => (current < 2 ? current + 1 : current));
   const prevStep = () =>
@@ -70,15 +109,24 @@ export function CreateCard({ opened, close }: IModalProps) {
           }}
         >
           <Stepper.Step completedIcon={<span>1</span>}>
-            <EditStaffListModal1 />
+            <EditStaffListModal1
+              firstEdit={editstepdata}
+              SetFirstEdit={SetEditstepdata}
+            />
           </Stepper.Step>
 
           <Stepper.Step completedIcon={<span>2</span>}>
-            <EditStaffListModal2 />
+            <EditStaffListModal2
+              secondEdit={editstepdata}
+              SetsecondEdit={SetEditstepdata}
+            />
           </Stepper.Step>
 
           <Stepper.Step completedIcon={<span>3</span>}>
-            <EditStaffListModal3 />
+            <EditStaffListModal3
+              thirdEdit={editstepdata}
+              SetthirdEdit={SetEditstepdata}
+            />
           </Stepper.Step>
         </Stepper>
       </div>

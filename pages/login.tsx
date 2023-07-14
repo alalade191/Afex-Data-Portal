@@ -50,9 +50,6 @@ export default function loginPage() {
               className="w-[466px] bg-white rounded-2xl my-[50px]"
             >
               <Login />
-              {/* <ForgetPassword /> */}
-              {/* <Otp /> */}
-              {/* <ResetPassword /> */}
             </div>
           </section>
         </div>

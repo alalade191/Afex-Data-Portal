@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 interface Btn {
   text: string;
 }

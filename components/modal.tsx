@@ -5,20 +5,104 @@ import FirstStepper from "./firststepper";
 import Image from "next/image";
 import SecondStepper from "./secondstepper";
 import ThirdStepper from "./thirdstepper";
+import axios from "axios";
+import { fileURLToPath } from "url";
+import { FileWithPath } from "react-dropzone";
 
 interface IModalProps {
   opened: boolean;
   close: () => void;
+  openSuccess: () => void;
 }
 
-export function CreateCard({ opened, close }: IModalProps) {
+export interface Idata {
+  first_name: string;
+  last_name: string;
+  middle_name: string;
+  phone_number: string;
+  gender: string;
+  // marital_status: string;
+  martial_status: string;
+  email: string;
+  alias_email: string;
+  tribe: string;
+  squad: string;
+  phone: string;
+  // region: string;
+  // city_address: string;
+  address: string;
+  username: string;
+  date_of_birth: string;
+  next_of_kin_email: string;
+  next_of_kin_last_name: string;
+  next_of_kin_first_name: string;
+  next_of_kin_relationship: string;
+  picture: null | File;
+  role: string;
+}
+
+export function CreateCard({ opened, openSuccess, close }: IModalProps) {
   const [active, setActive] = useState(0);
 
-  const [];
+  const [stepdata, SetStepdata] = useState<Idata>({
+    first_name: "",
+    last_name: "",
+    middle_name: "",
+    phone_number: "",
+    gender: "",
+    // marital_status: "",
+    martial_status: "",
+    email: "",
+    alias_email: "",
+    tribe: "",
+    squad: "",
+    phone: "",
+    username: "",
+    date_of_birth: "",
+    next_of_kin_email: "",
+    next_of_kin_last_name: "",
+    next_of_kin_first_name: "",
+    next_of_kin_relationship: "",
+    picture: null,
+    role: "",
+    address: "",
+  });
+
   const nextStep = () =>
     setActive((current) => (current < 2 ? current + 1 : current));
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
+
+  // function to submit the form
+
+  const SubmitStaffList = () => {
+    const token = JSON.parse(localStorage.getItem("userlogin") as string)
+      ?.tokens?.access;
+    const formData = new FormData();
+    const { username, ...data } = stepdata;
+    Object.entries({
+      ...data,
+      alias_email: `${username}@${data.alias_email}`,
+      email: `${username}${data.email}`,
+    }).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    axios({
+      url: "https://expertportal-production.up.railway.app/api/staff/create",
+      data: formData,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: "post",
+    })
+      .then(function (res) {
+        close();
+        openSuccess();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   return (
     <Modal
@@ -72,15 +156,18 @@ export function CreateCard({ opened, close }: IModalProps) {
           }}
         >
           <Stepper.Step completedIcon={<span>1</span>}>
-            <FirstStepper />
+            <FirstStepper dataState={stepdata} SetDataState={SetStepdata} />
           </Stepper.Step>
 
           <Stepper.Step completedIcon={<span>2</span>}>
-            <SecondStepper />
+            <SecondStepper
+              secondState={stepdata}
+              setSecondState={SetStepdata}
+            />
           </Stepper.Step>
 
           <Stepper.Step completedIcon={<span>3</span>}>
-            <ThirdStepper />
+            <ThirdStepper thirdState={stepdata} setThirdState={SetStepdata} />
           </Stepper.Step>
         </Stepper>
       </div>
@@ -115,7 +202,8 @@ export function CreateCard({ opened, close }: IModalProps) {
         </Button>
 
         <Button
-          onClick={nextStep}
+          // onClick={() => (active < 2 ? nextStep() : console.log(stepdata))}
+          onClick={active < 2 ? nextStep : SubmitStaffList}
           styles={{
             root: {
               background: "#3045BC !important",
@@ -127,7 +215,7 @@ export function CreateCard({ opened, close }: IModalProps) {
             },
           }}
         >
-          <div className="flex gap-1 items-center text-[#C1C2C6] text-sm font-medium">
+          <span className="flex gap-1 items-center text-[#C1C2C6] text-sm font-medium">
             <Image
               height={20}
               width={20}
@@ -135,7 +223,7 @@ export function CreateCard({ opened, close }: IModalProps) {
               alt="arrowright"
             />
             <p>Next</p>
-          </div>
+          </span>
         </Button>
       </Group>
     </Modal>

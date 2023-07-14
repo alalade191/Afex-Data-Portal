@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { IDasboard } from "../dashboard-overview";
 
-const Cards: React.FC = () => {
+const Cards = ({ dashboardData }: { dashboardData: IDasboard }) => {
   interface DashboardCard1 {
     header: string;
     number: number;
@@ -24,27 +25,27 @@ const Cards: React.FC = () => {
   const card: DashboardCard1[] = [
     {
       header: "Overall number of Staff",
-      number: 1009,
+      number: dashboardData?.overall_staff,
       firstimage: "/icons/first.svg",
       secondimage: "/icons/chart.svg",
       firsttext: "Male Staff",
       secondtext: "Female Staff",
-      firstnumber: 709,
-      secondnumber: 300,
+      firstnumber: dashboardData?.male_staff,
+      secondnumber: dashboardData?.female_staff,
     },
   ];
 
   const othercard: Dashboardcard2[] = [
     {
       header: "Overall number of Tribes",
-      number: 20,
+      number: dashboardData?.overall_tribe,
       firstimage: "/icons/second.svg",
       created: "Last created:",
       days: "10d ago",
     },
     {
-      header: "Overall number of Squards",
-      number: 85,
+      header: "Overall number of Squads",
+      number: dashboardData?.overall_squad,
       firstimage: "/icons/third.svg",
       created: "Last created:",
       days: "10d ago",
@@ -107,7 +108,7 @@ const Cards: React.FC = () => {
                         <div className="flex gap-1 items-center">
                           <div className="h-[4px] w-[8px] rounded-sm bg-[#8F9198] mx-[5px]"></div>
                           <p className="font-medium text-sm text-[#8F9198]">
-                            {item.firsttext}
+                            {item.secondtext}
                           </p>
                         </div>
                       </div>

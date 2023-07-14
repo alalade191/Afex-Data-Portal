@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import withAuth from "@/pages/routing-protection";
 
 const AdminProfile = () => {
   interface Data {
@@ -263,4 +264,4 @@ const AdminProfile = () => {
     </div>
   );
 };
-export default AdminProfile;
+export default withAuth(AdminProfile);

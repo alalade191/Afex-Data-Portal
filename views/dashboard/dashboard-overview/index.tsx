@@ -1,13 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Cards from "../dashboardcards";
 import Link from "next/link";
 import DashboadTableList from "../dashboard-table";
+import withAuth from "@/pages/routing-protection";
+
+export interface IDasboard {
+  female_staff: number;
+  male_staff: number;
+  overall_squad: number;
+  overall_staff: number;
+  overall_tribe: number;
+  recent_staff: any[];
+}
 
 const DashboardOverview = () => {
+  const [view, setView] = useState<IDasboard>(null);
+  const viewdata = async () => {
+    const token = JSON.parse(localStorage.getItem("userlogin") as string)
+      ?.tokens?.access;
+    const res = await fetch(
+      "https://expertportal-production.up.railway.app/api/staff/dashboard/",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    // console.log(data);
+    setView(data);
+  };
+  useEffect(() => {
+    viewdata();
+  }, []);
   return (
     <div>
-      <Cards />
+      <Cards dashboardData={view} />
 
       <div className="flex items-center justify-between pt-[40px] pb-[30px]">
         <h4 className="text-base font-semibold text-[#2C2F3C]">
@@ -30,10 +61,10 @@ const DashboardOverview = () => {
       </div>
 
       <div className="h-[260px] overflow-y-scroll hide">
-        <DashboadTableList />
+        <DashboadTableList tableData={view?.recent_staff} />
       </div>
     </div>
   );
 };
 
-export default DashboardOverview;
+export default withAuth(DashboardOverview);

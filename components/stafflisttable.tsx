@@ -1,120 +1,19 @@
 import React from "react";
 import ActiveTable from "./activestafflisttablestyle";
 import { Table } from "@mantine/core";
+import { IStaffList } from "@/views/dashboard/staff-management";
 
-const StaffList = () => {
-  const tablelists = [
-    {
-      check: <input type="checkbox" name="" id="" />,
-      serial: 1,
-      name: "Ayodele Davies",
-      email: "adavies@afexnigeria.com",
-      mobile: 8106545067,
-      tribe: "Innovation and Technology",
-      squad: "Product Design",
-      state: <ActiveTable />,
-    },
-    {
-      check: <input type="checkbox" name="" id="" />,
-      serial: 2,
-      name: "Ayodele Davies",
-      email: "adavies@afexnigeria.com",
-      mobile: 8106545067,
-      tribe: "Innovation and Technology",
-      squad: "Product Design",
-      state: <ActiveTable />,
-    },
-    {
-      check: <input type="checkbox" name="" id="" />,
-      serial: 3,
-      name: "Ayodele Davies",
-      email: "adavies@afexnigeria.com",
-      mobile: 8106545067,
-      tribe: "Innovation and Technology",
-      squad: "Product Design",
-      state: <ActiveTable />,
-    },
-    {
-      check: <input type="checkbox" name="" id="" />,
-      serial: 4,
-      name: "Ayodele Davies",
-      email: "adavies@afexnigeria.com",
-      mobile: 8106545067,
-      tribe: "Innovation and Technology",
-      squad: "Product Design",
-      state: <ActiveTable />,
-    },
-    {
-      check: <input type="checkbox" name="" id="" />,
-      serial: 5,
-      name: "Ayodele Davies",
-      email: "adavies@afexnigeria.com",
-      mobile: 8106545067,
-      tribe: "Innovation and Technology",
-      squad: "Product Design",
-      state: <ActiveTable />,
-    },
-    {
-      check: <input type="checkbox" name="" id="" />,
-      serial: 6,
-      name: "Ayodele Davies",
-      email: "adavies@afexnigeria.com",
-      mobile: 8106545067,
-      tribe: "Innovation and Technology",
-      squad: "Product Design",
-      state: <ActiveTable />,
-    },
-    {
-      check: <input type="checkbox" name="" id="" />,
-      serial: 7,
-      name: "Ayodele Davies",
-      email: "adavies@afexnigeria.com",
-      mobile: 8106545067,
-      tribe: "Innovation and Technology",
-      squad: "Product Design",
-      state: <ActiveTable />,
-    },
-    {
-      check: <input type="checkbox" name="" id="" />,
-      serial: 8,
-      name: "Ayodele Davies",
-      email: "adavies@afexnigeria.com",
-      mobile: 8106545067,
-      tribe: "Innovation and Technology",
-      squad: "Product Design",
-      state: <ActiveTable />,
-    },
-    {
-      check: (
-        <input
-          type="checkbox"
-          name=""
-          id=""
-          style={{
-            background: "green",
-          }}
-        />
-      ),
-      serial: 9,
-      name: "Ayodele Davies",
-      email: "adavies@afexnigeria.com",
-      mobile: 8106545067,
-      tribe: "Innovation and Technology",
-      squad: "Product Design",
-      state: <ActiveTable />,
-    },
-  ];
+const StaffList = ({ tableData }: { tableData: IStaffList[] }) => {
 
-  const rows = tablelists.map((item) => (
-    <tr key={item.email}>
-      <td className="text-xs font-normal text-red-300">{item.check}</td>
-      <td>{item.serial}</td>
+  const rows = tableData?.map((item, i) => (
+    <tr key={item.id}>
+      <td>{i + 1}</td>
       <td>{item.name}</td>
       <td>{item.email}</td>
-      <td>{item.mobile}</td>
+      <td>{item.phone_number}</td>
       <td>{item.tribe}</td>
       <td>{item.squad}</td>
-      <td>{item.state}</td>
+      <td>{item.status ? <ActiveTable /> : null}</td>
     </tr>
   ));
 
@@ -122,10 +21,6 @@ const StaffList = () => {
     <Table className="mt-3">
       <thead className="bg-[#F5F5F6] font-medium text-base py-[15px] text-[#4A4C58]">
         <tr className="">
-          <th>
-            {" "}
-            <input type="checkbox" name="" id="" />{" "}
-          </th>
           <th>S/N</th>
           <th>Name</th>
           <th>Email Address</th>

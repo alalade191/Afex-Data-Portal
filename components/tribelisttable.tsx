@@ -77,8 +77,8 @@ const TribeList = () => {
     },
   ];
 
-  const rows = tablelists.map((item) => (
-    <tr key={item.date}>
+  const rows = tablelists.map((item, i) => (
+    <tr key={i}>
       <td>{item.tribe}</td>
       <td>{item.squad}</td>
       <td>{item.lead}</td>

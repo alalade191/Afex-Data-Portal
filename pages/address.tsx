@@ -4,6 +4,7 @@ import { AuthContext, IContextType } from "./_app";
 import Image from "next/image";
 import DashboardSidebar from "@/views/dashboard/dashboard-sidebar";
 import Office from "@/views/dashboard/office";
+import withAuth from "./routing-protection";
 
 function Address() {
   const { theme, setTheme } = useTheme();
@@ -82,4 +83,4 @@ function Address() {
   );
 }
 
-export default Address;
+export default withAuth(Address);

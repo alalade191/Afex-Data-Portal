@@ -5,6 +5,7 @@ import Search from "@/components/search";
 import Tribemodal from "@/components/tribemodal";
 import TribeList from "@/components/tribelisttable";
 import Image from "next/image";
+import withAuth from "@/pages/routing-protection";
 
 const Tribe = () => {
   const [opened, { open, close }] = useDisclosure(false);
@@ -76,4 +77,4 @@ const Tribe = () => {
     </div>
   );
 };
-export default Tribe;
+export default withAuth(Tribe);

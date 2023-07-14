@@ -3,9 +3,12 @@ import Link from "next/link";
 import Button from "@/components/button";
 import InputField from "@/components/input-field";
 import { FormEvent } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { AuthContext, IContextType } from "@/pages/_app";
 import { LoadingOverlay } from "@mantine/core";
+
 import PersonalStepper from "@/views/modals/personal-stepper";
 
 const Login: React.FC = () => {
@@ -36,6 +39,7 @@ const Login: React.FC = () => {
       data.tokens.access && router.push("/dashboard");
       setLoading(false);
     } catch (error) {
+      toast.error("Incorrect credentials");
       console.log(error);
       setLoading(false);
     }
@@ -49,39 +53,42 @@ const Login: React.FC = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col items-center py-[30px] gap-[20px]"
-    >
-      <h3 className=" text-[#4A4C58] ont-switzer font-semibold text-2xl w-[386px]">
-        Sign in with SSO
-      </h3>
-
-      <InputField
-        onChange={(emailvalue) => setEmail(emailvalue)}
-        htmlFor="email"
-        label="Email Address"
-        name="email"
-        type="email"
-        placeholder="Enter email address"
-      />
-
-      <InputField
-        onChange={(passwordvalue) => setPassword(passwordvalue)}
-        htmlFor="password"
-        label="Password"
-        name="password"
-        type="pasword"
-        placeholder="*************"
-      />
-      <Link
-        href="/forgotpassword"
-        className="text-base font-semibold font-switzer text-[#BF2018] w-[386px] ont-switzer text-end"
+    <>
+      <ToastContainer toastClassName="customToast" />
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center py-[30px] gap-[20px]"
       >
-        Forgot Password?
-      </Link>
-      <Button text="Sign in" />
-    </form>
+        <h3 className=" text-[#4A4C58] ont-switzer font-semibold text-2xl w-[386px]">
+          Sign in with SSO
+        </h3>
+
+        <InputField
+          onChange={(emailvalue) => setEmail(emailvalue)}
+          htmlFor="email"
+          label="Email Address"
+          name="email"
+          type="email"
+          placeholder="Enter email address"
+        />
+
+        <InputField
+          onChange={(passwordvalue) => setPassword(passwordvalue)}
+          htmlFor="password"
+          label="Password"
+          name="password"
+          type="pasword"
+          placeholder="*************"
+        />
+        <Link
+          href="/forgotpassword"
+          className="text-base font-semibold font-switzer text-[#BF2018] w-[386px] ont-switzer text-end"
+        >
+          Forgot Password?
+        </Link>
+        <Button text="Sign in" />
+      </form>
+    </>
   );
   <LoadingOverlay visible={loading} overlayBlur={2} />;
 };

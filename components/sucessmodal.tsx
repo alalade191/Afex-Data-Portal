@@ -29,7 +29,7 @@ function SucessCard({ opened, close }: IModalProps) {
     >
       {/* Modal content */}
 
-      <div className="flex flex-col items-center justify-center bg-red-300">
+      <div className="flex flex-col items-center justify-center">
         <figure>
           <Image
             height={150}

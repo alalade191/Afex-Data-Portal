@@ -1,18 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Button, PasswordInput, TextInput, px, Select } from "@mantine/core";
+import {
+  Button,
+  PasswordInput,
+  TextInput,
+  px,
+  Select,
+  MultiSelect,
+} from "@mantine/core";
 import { Group, Text, useMantineTheme, rem } from "@mantine/core";
 import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import Link from "next/link";
-
-const SecondStepper = () => {
+import { Idata } from "./modal";
+import useOrganizationRequests from "@/hooks/use-organization-requests";
+interface Data {
+  secondState: Idata;
+  setSecondState: (val: Idata) => void;
+}
+const SecondStepper = ({ secondState, setSecondState }: Data) => {
+  const { cities, location, squad, tribes, setCountry } =
+    useOrganizationRequests(secondState.tribe);
   return (
     <div>
       <div className="flex items-center justify-center gap-6">
         <div className="flex items-center justify-center gap-[6px]">
           <TextInput
             placeholder="Username"
+            value={secondState.username}
+            onChange={(e) => {
+              setSecondState({
+                ...secondState,
+                // username: `${e.target.value}@africaexchange.com`,
+                username: e.target.value,
+              });
+            }}
             label="Official Email Address"
             classNames={{
               root: "flex flex-col gap-3 mt-5",
@@ -25,6 +47,13 @@ const SecondStepper = () => {
           <TextInput
             placeholder="@africaexchange.com"
             label=""
+            value={secondState.email}
+            onChange={(e) => {
+              setSecondState({
+                ...secondState,
+                email: e.target.value,
+              });
+            }}
             classNames={{
               root: "flex flex-col gap-3 mt-5",
               input:
@@ -38,6 +67,8 @@ const SecondStepper = () => {
           <TextInput
             placeholder="Username"
             label="Taggable Aliases"
+            value={secondState.username}
+            disabled
             classNames={{
               root: "flex flex-col gap-3 mt-5",
               input:
@@ -47,14 +78,21 @@ const SecondStepper = () => {
           />
 
           <Select
-            label="Gender"
+            label=""
             placeholder="Select email domain"
+            value={secondState.alias_email}
+            onChange={(value) => {
+              setSecondState({
+                ...secondState,
+                alias_email: value as string,
+              });
+            }}
             data={[
-              { value: "africa", label: "africaexchange.com" },
-              { value: "afex", label: "afex.africa" },
-              { value: "afexnigeria", label: "afexnigeria.com" },
-              { value: "afexuganda", label: "afexuganda.com" },
-              { value: "afexkenya", label: "afexkenya.com" },
+              { value: "africaexchange.com", label: "africaexchange.com" },
+              { value: "afex.africa", label: "afex.africa" },
+              { value: "afexnigeria.com", label: "afexnigeria.com" },
+              { value: "afexuganda.com", label: "afexuganda.com" },
+              { value: "afexkenya.com", label: "afexkenya.com" },
             ]}
             classNames={{
               root: "outline-transparent mt-5",
@@ -70,10 +108,14 @@ const SecondStepper = () => {
         <Select
           label="Tribe/Department"
           placeholder="Select Tribe/Department"
-          data={[
-            { value: "innovation", label: "Innovation" },
-            { value: "technology", label: "Technology" },
-          ]}
+          value={secondState.tribe}
+          onChange={(value) => {
+            setSecondState({
+              ...secondState,
+              tribe: value,
+            });
+          }}
+          data={tribes}
           classNames={{
             root: "outline-transparent mt-5",
             input:
@@ -85,10 +127,14 @@ const SecondStepper = () => {
         <Select
           label="Squad/Unit"
           placeholder="Select Squad/Unit"
-          data={[
-            { value: "innovation", label: "Innovation Lab" },
-            { value: "design and app", label: "Design and Apps" },
-          ]}
+          value={secondState.squad}
+          onChange={(value) => {
+            setSecondState({
+              ...secondState,
+              squad: value,
+            });
+          }}
+          data={squad}
           classNames={{
             root: "outline-transparent mt-5",
             input:
@@ -101,6 +147,13 @@ const SecondStepper = () => {
       <div className="flex items-center justify-center gap-6 pt-[15px] pb-[25px]">
         <TextInput
           placeholder="Input Designation"
+          value={secondState.role}
+          onChange={(e) => {
+            setSecondState({
+              ...secondState,
+              role: e.target.value,
+            });
+          }}
           label="Designation"
           classNames={{
             root: "flex flex-col gap-3 mt-5",
@@ -113,6 +166,13 @@ const SecondStepper = () => {
         <TextInput
           placeholder="Enter Phone Number"
           label="Work Phone"
+          value={secondState.phone}
+          onChange={(e) => {
+            setSecondState({
+              ...secondState,
+              phone: e.target.value,
+            });
+          }}
           classNames={{
             root: "flex flex-col gap-3 mt-5",
             input:
@@ -126,10 +186,10 @@ const SecondStepper = () => {
         <Select
           label="Region (Country)"
           placeholder="Select Country"
-          data={[
-            { value: "andorra", label: "Andorra" },
-            { value: "united", label: "United Arab Emirate" },
-          ]}
+          onChange={(value) => {
+            setCountry(value);
+          }}
+          data={location}
           classNames={{
             root: "outline-transparent mt-5",
             input:
@@ -141,11 +201,14 @@ const SecondStepper = () => {
         <Select
           label="City Address"
           placeholder="Select City"
-          data={[
-            { value: "abuja", label: "Abuja, FCT" },
-            { value: "ibadan", label: "Ibadan, Oyo State" },
-            { value: "lagos", label: "Lagos State" },
-          ]}
+          value={secondState.address}
+          onChange={(value) => {
+            setSecondState({
+              ...secondState,
+              address: value as string,
+            });
+          }}
+          data={cities}
           classNames={{
             root: "outline-transparent mt-5",
             input:

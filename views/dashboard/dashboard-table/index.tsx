@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-const DashboadTableList: React.FC = () => {
+const DashboadTableList = ({ tableData }) => {
   interface Table {
     name: string;
     email: string;
@@ -9,6 +9,7 @@ const DashboadTableList: React.FC = () => {
     tribe: string;
     squad: string;
   }
+
   const tablelist: Table[] = [
     {
       name: "Ayodele Davies",
@@ -74,34 +75,39 @@ const DashboadTableList: React.FC = () => {
       squad: "Product Design",
     },
   ];
+
   return (
     <div>
       {/* staff list data */}
-      <div>
-        {/*Table Header */}
-        <div className="px-[20px] py-[8px] text-base text-[#4A4C58] bg-[#DADADD] flex items-center justify-between rounded-lg">
-          <h3>Name</h3>
-          <h3>Email Address</h3>
-          <h3>Mobile Number</h3>
-          <h3>Tribe/Department</h3>
-          <h3>Squard/Unit</h3>
-        </div>
+      <table className="w-full">
+        <thead>
+          {/*Table Header */}
+          <tr className="px-[20px] py-[8px] text-base text-[#4A4C58] bg-[#DADADD] rounded-lg">
+            <th className="text-left py-3">Name</th>
+            <th className="text-left py-3">Email Address</th>
+            <th className="text-left py-3">Mobile Number</th>
+            <th className="text-left py-3">Tribe/Department</th>
+            <th className="text-left py-3">Squad/Unit</th>
+          </tr>
+        </thead>
         {/* Table Data */}
-        {tablelist.map((list) => {
-          return (
-            <div
-              key={list.name}
-              className="px-[20px] py-[20px] flex items-center justify-between border-b text-[#4A4C58] leading-5 font-normal text-sm border-[#F0F0F1]"
-            >
-              <h3>{list.name}</h3>
-              <h3>{list.email}</h3>
-              <h3>{list.mobile}</h3>
-              <h3>{list.tribe}</h3>
-              <h3>{list.squad}</h3>
-            </div>
-          );
-        })}
-      </div>
+        <tbody>
+          {tableData?.map((list, i) => {
+            return (
+              <tr
+                key={i}
+                className="border-b text-[#4A4C58] leading-5 font-normal text-sm border-[#F0F0F1]"
+              >
+                <td className="py-3">{list.name}</td>
+                <td className="py-3">{list.email}</td>
+                <td className="py-3">{list.phone_number}</td>
+                <td className="py-3">{list.tribe}</td>
+                <td className="py-3">{list.squad}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
