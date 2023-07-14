@@ -264,4 +264,4 @@ const AdminProfile = () => {
     </div>
   );
 };
-export default withAuth(AdminProfile);
+export default AdminProfile;

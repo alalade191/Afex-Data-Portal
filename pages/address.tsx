@@ -83,4 +83,4 @@ function Address() {
   );
 }
 
-export default withAuth(Address);
+export default Address;

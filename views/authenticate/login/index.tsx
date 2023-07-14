@@ -7,19 +7,17 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { AuthContext, IContextType } from "@/pages/_app";
-import { LoadingOverlay } from "@mantine/core";
-
-import PersonalStepper from "@/views/modals/personal-stepper";
+import { Loader } from "@mantine/core";
+import PersonalStepper from "@/modals/personal-stepper";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const { setAuthUser } = useContext(AuthContext) as IContextType;
   //  const[]= useState('')
   const router = useRouter();
   const login = async () => {
-    setLoading(true);
     try {
       const resp = await fetch(
         "https://expertportal-production.up.railway.app/api/auth/login/",
@@ -37,11 +35,9 @@ const Login: React.FC = () => {
       console.log(data);
       localStorage.setItem("userlogin", JSON.stringify(data));
       data.tokens.access && router.push("/dashboard");
-      setLoading(false);
     } catch (error) {
       toast.error("Incorrect credentials");
       console.log(error);
-      setLoading(false);
     }
   };
 
@@ -90,6 +86,5 @@ const Login: React.FC = () => {
       </form>
     </>
   );
-  <LoadingOverlay visible={loading} overlayBlur={2} />;
 };
 export default Login;

@@ -3,12 +3,13 @@ import React from "react";
 import { useState } from "react";
 import { clsx } from "@mantine/core";
 import Link from "next/link";
+import { useRouter } from "next/router";
+interface Sidebar {
+  image: string;
+  text: string;
+  link?: string;
+}
 const DashboardSidebar = () => {
-  interface Sidebar {
-    image: string;
-    text: string;
-    link: string;
-  }
   const sidebarlist: Sidebar[] = [
     {
       image: "/icons/home.svg",
@@ -35,12 +36,19 @@ const DashboardSidebar = () => {
     {
       image: "/icons/logout.svg",
       text: "Logout",
-      link: "/landingpage",
+      // link: "/landingpage",
+      link: "",
     },
   ];
   const [selected, setSelected] = useState(0);
   const [adminselect, setAdminselect] = useState(null);
+  const router = useRouter();
 
+  const Logout = () => {
+    localStorage.clear();
+    router.push("/landingpage");
+    console.log("logout");
+  };
   return (
     <div>
       <div className="flex flex-col gap-5 pt-8">
@@ -84,6 +92,10 @@ const DashboardSidebar = () => {
           <div
             key={admin.text}
             onClick={() => {
+              if (i === 1) {
+                Logout();
+                return;
+              }
               setAdminselect(i);
             }}
           >

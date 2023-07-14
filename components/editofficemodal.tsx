@@ -75,7 +75,7 @@ function EditOfficemodal({ opened, close }: IModalProps) {
           classNames={{
             root: "flex flex-col gap-3 mt-8",
             input:
-              "h-[50px] outline-none pl-4 text-xs text-[#C1C2C6] w-full rounded-lg border-[2px] border-[#DADADD]",
+              "h-[50px] outline-none pl-4 text-xs text-[#4A4C58] w-full rounded-lg border-[2px] border-[#DADADD]",
             label: "text-[#4A4C58] text-sm",
           }}
         />
@@ -86,13 +86,13 @@ function EditOfficemodal({ opened, close }: IModalProps) {
           classNames={{
             root: "flex flex-col gap-3 mt-8",
             input:
-              "h-[50px] outline-none pl-4 text-xs text-[#C1C2C6] w-full rounded-lg border-[2px] border-[#DADADD]",
+              "h-[50px] outline-none pl-4 text-xs text-[#4A4C58] w-full rounded-lg border-[2px] border-[#DADADD]",
             label: "text-[#4A4C58] text-sm",
           }}
         />
       </div>
       <div className="flex items-center gap-5 mt-8">
-        <p className="font-medium text-sm text-[#54565B]">Set as Headquarter</p>
+        <p className="font-medium text-sm text-[#4A4C58]">Set as Headquarter</p>
         <Switch
           label=""
           classNames={{

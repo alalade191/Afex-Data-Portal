@@ -133,6 +133,9 @@ const Office = () => {
                     {item?.city}
                   </h3>
                   <div className="flex items-center gap-3">
+                    <div className="h-[27px] w-[60px] bg-[#E8F1FC] text-[#1C75E1] text-sm font-medium p-1 rounded-[4px]">
+                      <span>Nigeria</span>
+                    </div>
                     {/* <Image
                       height={27}
                       width={60}
@@ -186,4 +189,4 @@ const Office = () => {
     </div>
   );
 };
-export default withAuth(Office);
+export default Office;

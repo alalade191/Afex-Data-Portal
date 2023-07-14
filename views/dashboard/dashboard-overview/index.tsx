@@ -67,4 +67,4 @@ const DashboardOverview = () => {
   );
 };
 
-export default withAuth(DashboardOverview);
+export default DashboardOverview;

@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { AuthContext, IContextType } from "./_app";
 import DashboardSidebar from "@/views/dashboard/dashboard-sidebar";
 import StaffManagement from "@/views/dashboard/staff-management";
+import withAuth from "./routing-protection";
 
 function StaffManagementPage() {
   const { theme, setTheme } = useTheme();
@@ -82,4 +83,4 @@ function StaffManagementPage() {
   );
 }
 
-export default StaffManagementPage;
+export default withAuth(StaffManagementPage);

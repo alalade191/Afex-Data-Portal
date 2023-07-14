@@ -9,7 +9,7 @@ import ActiveTable from "@/components/activestafflisttablestyle";
 import StaffList from "@/components/stafflisttable";
 import DeactivateCard from "@/components/deactivatemodal";
 import SucessCard from "@/components/sucessmodal";
-import PersonalStepper from "@/views/modals/personal-stepper";
+import PersonalStepper from "@/modals/personal-stepper";
 import { IDasboard } from "../dashboard-overview";
 import withAuth from "@/pages/routing-protection";
 
@@ -120,4 +120,5 @@ const StaffManagement = () => {
     </div>
   );
 };
-export default withAuth(StaffManagement);
+export default StaffManagement;
+// export default withAuth(StaffManagement);

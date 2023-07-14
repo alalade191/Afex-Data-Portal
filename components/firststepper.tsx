@@ -182,7 +182,7 @@ const FirstStepper = ({ dataState, SetDataState }: Data) => {
           classNames={{
             root: "flex flex-col gap-3 mt-5",
             input:
-              "h-[54px] outline-none pl-4 text-xs text-[#C1C2C6] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
+              "h-[54px] outline-none pl-4 text-xs text-[#4A4C58] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
             label: "text-[#4A4C58] text-sm",
           }}
         />
@@ -200,7 +200,7 @@ const FirstStepper = ({ dataState, SetDataState }: Data) => {
           classNames={{
             root: "flex flex-col gap-3 mt-5",
             input:
-              "h-[54px] outline-none pl-4 text-xs text-[#C1C2C6] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
+              "h-[54px] outline-none pl-4 text-xs text-[#4A4C58] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
             label: "text-[#4A4C58] text-sm",
           }}
         />
@@ -220,7 +220,7 @@ const FirstStepper = ({ dataState, SetDataState }: Data) => {
           classNames={{
             root: "flex flex-col gap-3 mt-5",
             input:
-              "h-[54px] outline-none pl-4 text-xs text-[#C1C2C6] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
+              "h-[54px] outline-none pl-4 text-xs text-[#4A4C58] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
             label: "text-[#4A4C58] text-sm",
           }}
         />
@@ -238,7 +238,7 @@ const FirstStepper = ({ dataState, SetDataState }: Data) => {
           classNames={{
             root: "flex flex-col gap-3 mt-5",
             input:
-              "h-[54px] outline-none pl-4 text-xs text-[#C1C2C6] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
+              "h-[54px] outline-none pl-4 text-xs text-[#4A4C58] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
             label: "text-[#4A4C58] text-sm",
           }}
         />
@@ -262,7 +262,7 @@ const FirstStepper = ({ dataState, SetDataState }: Data) => {
           classNames={{
             root: "outline-transparent mt-5",
             input:
-              "h-[54px] outline-none pl-4 text-xs text-[#C1C2C6] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
+              "h-[54px] outline-none pl-4 text-xs text-[#4A4C58] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
             label: "text-[#4A4C58] text-sm",
           }}
         />
@@ -286,7 +286,7 @@ const FirstStepper = ({ dataState, SetDataState }: Data) => {
           classNames={{
             root: "outline-none mt-5",
             input:
-              "h-[54px] outline-none pl-4 text-xs text-[#C1C2C6] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
+              "h-[54px] outline-none pl-4 text-xs text-[#4A4C58] w-[395px] rounded-lg border-[2px] border-[#DADADD]",
             label: "text-[#4A4C58] text-sm",
           }}
         />

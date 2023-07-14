@@ -83,5 +83,6 @@ function OverviewDashboard() {
     </div>
   );
 }
-export default OverviewDashboard;
-// export default withAuth(OverviewDashboard);
+
+// export default OverviewDashboard;
+export default withAuth(OverviewDashboard);

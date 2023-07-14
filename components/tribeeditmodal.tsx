@@ -8,20 +8,19 @@ interface IModalProps {
   close: () => void;
 }
 
-function Tribemodal({ opened, close }: IModalProps) {
-  const [lead, setLead] = useState(null);
-  useEffect(() => {
-    leadget();
-  }, []);
-
+function TribeModalEdit({ opened, close }: IModalProps) {
   const [active, setActive] = useState(1);
-  const [tribemodal, setTribemodal] = useState<Itribe>({
+  const [tribeedit, setTribeedit] = useState<Itribe>({
     name: "",
     description: "",
     tribe_lead: "",
   });
+  const [secondtribe, setSecondtribe] = useState(null);
+  useEffect(() => {
+    Editget;
+  }, []);
 
-  const leadget = async () => {
+  const Editget = async () => {
     const token = JSON.parse(localStorage.getItem("userlogin"))?.tokens?.access;
     try {
       const response = await fetch(
@@ -35,7 +34,7 @@ function Tribemodal({ opened, close }: IModalProps) {
         }
       );
       const data = await response.json();
-      setLead(
+      setSecondtribe(
         data.results.reduce((acc, curr) => {
           acc.push({ label: curr.name, value: curr.id });
           return acc;
@@ -59,8 +58,8 @@ function Tribemodal({ opened, close }: IModalProps) {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            ...tribemodal,
-            tribe_lead: +tribemodal.tribe_lead,
+            ...tribeedit,
+            tribe_lead: +tribeedit.tribe_lead,
           }),
         }
       );
@@ -106,10 +105,10 @@ function Tribemodal({ opened, close }: IModalProps) {
       <TextInput
         placeholder="Enter Name"
         label="Tribe Name"
-        value={tribemodal.name}
+        value={tribeedit.name}
         onChange={(e) =>
-          setTribemodal({
-            ...tribemodal,
+          setTribeedit({
+            ...tribeedit,
             name: e.target.value,
           })
         }
@@ -124,10 +123,10 @@ function Tribemodal({ opened, close }: IModalProps) {
       <TextInput
         placeholder="Enter Description"
         label="Tribe Description"
-        value={tribemodal.description}
+        value={tribeedit.description}
         onChange={(e) =>
-          setTribemodal({
-            ...tribemodal,
+          setTribeedit({
+            ...tribeedit,
             description: e.target.value,
           })
         }
@@ -142,13 +141,14 @@ function Tribemodal({ opened, close }: IModalProps) {
       <Select
         label="Assign Tribe Lead"
         placeholder="Select Member"
+        value={tribeedit.tribe_lead}
         onChange={(value) =>
-          setTribemodal({
-            ...tribemodal,
+          setTribeedit({
+            ...tribeedit,
             tribe_lead: value as string,
           })
         }
-        data={lead ?? []}
+        data={secondtribe}
         classNames={{
           root: "outline-transparent mt-8",
           input:
@@ -156,13 +156,10 @@ function Tribemodal({ opened, close }: IModalProps) {
           label: "text-[#4A4C58] text-sm",
         }}
       />
-      <button
-        onClick={createTribe}
-        className="text-sm text-white bg-[#283A9D] rounded-lg py-[6px]  font-medium cursor-pointer w-full flex items-center justify-center mt-8"
-      >
+      <button className="text-sm text-white bg-[#283A9D] rounded-lg py-[6px]  font-medium cursor-pointer w-full flex items-center justify-center mt-8">
         <p>Create Tribe</p>
       </button>
     </Modal>
   );
 }
-export default Tribemodal;
+export default TribeModalEdit;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Export from "@/components/export";
 import { useDisclosure } from "@mantine/hooks";
 import Search from "@/components/search";
@@ -6,11 +6,36 @@ import Tribemodal from "@/components/tribemodal";
 import TribeList from "@/components/tribelisttable";
 import Image from "next/image";
 import withAuth from "@/pages/routing-protection";
-
+export interface Itribe {
+  name: string;
+  description: string;
+  tribe_lead: string;
+}
 const Tribe = () => {
   const [opened, { open, close }] = useDisclosure(false);
+  // const [tribe, setTribe] = useState("");
+
+  // const Tribedata = async () => {
+  //   const token = JSON.parse(localStorage.getItem("userlogin") as string)
+  //     ?.tokens?.access;
+  //   const res = await fetch("http://api.example.org/accounts/?page=4", {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   const data = await res.json();
+  //   console.log(data);
+  //   // setTribe(data.results);
+  // };
+
+  // useEffect(() => {
+  //   Tribedata();
+  // }, []);
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-full">
       <div className="flex items-center justify-between">
         <div className="flex gap-3">
           <Export />
@@ -28,7 +53,7 @@ const Tribe = () => {
       </div>
       <div className="border-t border-b border-[#D9DFE4] mt-6 pt-4 pb-1">
         <div className="flex items-center gap-1 hover:border-b-[2px] hover:border-[#D9DFE4] w-[80px]">
-          <p className="text-xsfont-medium text-[#4A4C58]">Staff list </p>
+          <p className="text-sm font-medium text-[#4A4C58]">Tribe list </p>
           <span className="h-[16px] rounded-full w-[16px] pl-1 flex items-center bg-[#F7F9FC] font-semibold text-xs text-[#8F9198]">
             0
           </span>
@@ -36,6 +61,7 @@ const Tribe = () => {
       </div>
 
       {/* <TribeList /> */}
+
       {/* update of staff listt */}
 
       <div className="flex flex-1 items-center justify-center">
@@ -77,4 +103,4 @@ const Tribe = () => {
     </div>
   );
 };
-export default withAuth(Tribe);
+export default Tribe;

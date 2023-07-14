@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import PersonalStepper from "@/views/modals/personal-stepper";
+import PersonalStepper from "@/modals/personal-stepper";
 
 const HomepageBody: React.FC = () => {
   return (
