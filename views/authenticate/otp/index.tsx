@@ -1,14 +1,51 @@
-import React from "react";
+import React, { useState, FormEvent } from "react";
 import Button from "@/components/button";
 import InputField from "@/components/input-field";
 import Image from "next/image";
 import Link from "next/link";
 import { PinInput, Group } from "@mantine/core";
 import Pin from "@/components/pininput";
+import OtpPin from "@/components/pin";
+import OtpInput from "react-otp-input";
+import { useRouter } from "next/navigation";
 
 const Otp: React.FC = () => {
+  const [otp, setOtp] = useState("");
+
+  const router = useRouter();
+  const verifypin = async () => {
+    try {
+      const res = await fetch(
+        "https://expertportal-production.up.railway.app/api/auth/verify-pin/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: "alalade191@gmail.com",
+            verification_code: otp,
+          }),
+        }
+      );
+      if (res.ok) router.push("/resetpassword");
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handlesubmit = (e: FormEvent) => {
+    e.preventDefault();
+    verifypin();
+  };
+
   return (
-    <div className="flex flex-col items-center py-[30px] gap-[20px]">
+    <form
+      onSubmit={handlesubmit}
+      className="flex flex-col items-center py-[30px] gap-[20px]"
+    >
       <h3 className="text-[#BF2018] pb-[15px] font-semibold text-2xl text-center w-[386px]">
         AFEX SSO
       </h3>
@@ -21,45 +58,20 @@ const Otp: React.FC = () => {
           Kindly enter the 6-digit pin sent to your email address provider
         </p>
       </div>
-      <Pin />
-      {/* <div className="flex gap-3">
-        <input
-          type="text"
-          name="number"
-          placeholder="0"
-          className="outline-none border border-[#F0F0F1] w-[25px] h-[30px] rounded-sm"
+
+      <div>
+        <OtpInput
+          value={otp}
+          onChange={setOtp}
+          numInputs={6}
+          inputType="tel"
+          inputStyle="w-24 h-10 caret-black text-center outline-none transition-all4 border-b-2 border-b-slate-700 focus:border-b-primary text-lg"
+          containerStyle="flex items-center justify-center gap-x-2 mt-7"
+          renderInput={(props) => (
+            <input {...props} style={{ width: "3.3rem" }} />
+          )}
         />
-        <input
-          type="text"
-          name="number"
-          placeholder="0"
-          className="outline-none border border-[#F0F0F1] w-[25px] h-[30px] rounded-sm"
-        />
-        <input
-          type="text"
-          name="number"
-          placeholder="0"
-          className="outline-none border border-[#F0F0F1] w-[25px] h-[30px] rounded-sm"
-        />
-        <input
-          type="text"
-          name="number"
-          placeholder="0"
-          className="outline-none border border-[#F0F0F1] w-[25px] h-[30px] rounded-sm"
-        />
-        <input
-          type="text"
-          name="number"
-          placeholder="0"
-          className="outline-none border border-[#F0F0F1] w-[25px] h-[30px] rounded-sm"
-        />
-        <input
-          type="text"
-          name="number"
-          placeholder="0"
-          className="outline-none border border-[#F0F0F1] w-[25px] h-[30px] rounded-sm"
-        />
-      </div> */}
+      </div>
 
       <Button text="Submit" />
       <p className="font-normal text-base text-end text-[#8F9198] font-switzer w-[386px]">
@@ -82,7 +94,7 @@ const Otp: React.FC = () => {
           <Link href="/">Back to Sign in</Link>
         </span>
       </div>
-    </div>
+    </form>
   );
 };
 export default Otp;

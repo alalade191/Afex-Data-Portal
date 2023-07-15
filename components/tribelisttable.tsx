@@ -3,7 +3,7 @@ import ActiveTribe from "./activetribestyle";
 import { Table } from "@mantine/core";
 import ActiveTribeTable from "./activetribestyle";
 
-const TribeList = () => {
+const TribeList = ({ tribe }) => {
   const tablelists = [
     {
       tribe: "Innovation and Technology",
@@ -77,7 +77,7 @@ const TribeList = () => {
     },
   ];
 
-  const rows = tablelists.map((item, i) => (
+  const rows = tribe?.map((item, i) => (
     <tr key={i}>
       <td>{item.tribe}</td>
       <td>{item.squad}</td>

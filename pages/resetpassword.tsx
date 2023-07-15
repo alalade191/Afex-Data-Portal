@@ -1,9 +1,9 @@
 import Login from "@/views/authenticate/login";
 import ResetPassword from "@/views/authenticate/reset-password";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
-export default function loginPage() {
+export default function ResetPass() {
   return (
     <>
       <div className="w-screen bg-[url('/images/background.png')] bg-no-repeat bg-cover h-screen object-cover flex flex-col">

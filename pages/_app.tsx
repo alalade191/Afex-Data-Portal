@@ -8,10 +8,23 @@ export interface IContextType {
   setAuthUser: Dispatch<SetStateAction<IAuthUser | null>>;
 }
 interface IAuthUser {
-  email: string;
-  first_name: string;
-  is_active: boolean;
-  last_name: string;
+  user: {
+    email: string;
+    first_name: string;
+    is_active: boolean;
+    last_name: string;
+  };
+
+  middle_name: string;
+  martial_status: string;
+  role: string;
+  phone_number: string;
+  gender: string;
+  next_of_kin_first_name: string;
+  next_of_kin_last_name: string;
+  next_of_kin_email: string;
+  next_of_kin_relationship: string;
+  unique_id: string;
   token: {
     access: string;
     refresh: string;

@@ -9,30 +9,37 @@ import withAuth from "@/pages/routing-protection";
 export interface Itribe {
   name: string;
   description: string;
-  tribe_lead: string;
+  tribe_lead?: string;
 }
 const Tribe = () => {
   const [opened, { open, close }] = useDisclosure(false);
-  // const [tribe, setTribe] = useState("");
+  const [tribe, setTribe] = useState([]);
 
-  // const Tribedata = async () => {
-  //   const token = JSON.parse(localStorage.getItem("userlogin") as string)
-  //     ?.tokens?.access;
-  //   const res = await fetch("http://api.example.org/accounts/?page=4", {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   const data = await res.json();
-  //   console.log(data);
-  //   // setTribe(data.results);
-  // };
+  const Tribedata = async () => {
+    try {
+      const token = JSON.parse(localStorage.getItem("userlogin") as string)
+        ?.tokens?.access;
+      const res = await fetch(
+        "https://expertportal-production.up.railway.app/api/tribes/",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+      setTribe(data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // useEffect(() => {
-  //   Tribedata();
-  // }, []);
+  useEffect(() => {
+    Tribedata();
+  }, []);
 
   return (
     <div className="flex flex-col h-full">
@@ -60,7 +67,7 @@ const Tribe = () => {
         </div>
       </div>
 
-      {/* <TribeList /> */}
+      <TribeList tribe={tribe} />
 
       {/* update of staff listt */}
 
@@ -104,3 +111,6 @@ const Tribe = () => {
   );
 };
 export default Tribe;
+function Tribedata() {
+  throw new Error("Function not implemented.");
+}

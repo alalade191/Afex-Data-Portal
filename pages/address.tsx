@@ -13,15 +13,27 @@ function Address() {
     <div>
       <header className="w-full max-w-full py-[12px] border-b border-[#F0F0F1]">
         <div className="w-[95%] mx-auto flex items-center justify-between">
-          <figure className="h-[20px] w-[70px]">
-            <Image
-              height={29}
-              width={100}
-              src={"/images/login-logo.svg"}
-              alt="logo"
-              className="w-full h-full"
-            />
-          </figure>
+          <div className="flex gap-2 items-center">
+            <figure className="h-[20px] w-[70px]">
+              <Image
+                height={29}
+                width={100}
+                src={"/images/login-logo.svg"}
+                alt="logo"
+                className="w-full h-full"
+              />
+            </figure>
+
+            <figure className="h-[30px] ml-[105px]">
+              <Image
+                height={50}
+                width={100}
+                src={"/icons/office.svg"}
+                alt="logo"
+                className="w-full h-full"
+              />
+            </figure>
+          </div>
           <div className="flex items-center gap-2 border-l border-[#F0F0F1] pl-[8px]">
             <figure className="h-[35px] w-[35px]  ">
               <Image

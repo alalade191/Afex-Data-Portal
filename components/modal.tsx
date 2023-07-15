@@ -111,7 +111,7 @@ export function CreateCard({ opened, openSuccess, close }: IModalProps) {
       onClose={close}
       title="Create Staff"
       centered
-      className="custom-modal"
+      className="custom-modal scroll-terminate"
       styles={{
         root: {},
         content: {

@@ -1,40 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext, IContextType } from "@/pages/_app";
 import Image from "next/image";
 import withAuth from "@/pages/routing-protection";
+interface Data {
+  image: string;
+  header: string;
+  paragraph: string | number;
+  imagecopy?: string;
+}
 
 const AdminProfile = () => {
-  interface Data {
-    image: string;
-    header: string;
-    paragraph: string | number;
-    imagecopy?: string;
-  }
+  const { authUser } = useContext(AuthContext) as IContextType;
   const userdata: Data[] = [
     {
       image: "/icons/department.svg",
       header: "DEPARTMENT",
-      paragraph: "Corporate Servoce",
+      paragraph: "Corporate Service",
     },
     {
       image: "/icons/email.svg",
       header: "EMAIL ADDRESS",
-      paragraph: "geromonsele@afexnigeria.com",
+      paragraph: authUser?.user.email,
       imagecopy: "/icons/copy.svg",
     },
     {
       image: "/icons/phone.svg",
       header: "MOBILE NUMBER",
-      paragraph: +2348106545067,
+      paragraph: authUser?.phone_number,
     },
     {
       image: "/icons/phone.svg",
       header: "WORKMOBILE",
-      paragraph: +2348106545067,
+      paragraph: authUser?.phone_number,
     },
     {
       image: "icons/calendar.svg",
       header: "DATE OF BIRTH",
-      paragraph: "14 january, xxxx",
+      paragraph: "14 january, 2005",
     },
   ];
   return (
@@ -62,7 +64,7 @@ const AdminProfile = () => {
               </figure>
             </div>
             <h3 className="font-medium py-[8px] text-3xl text-[#1c1e25]">
-              Gloria Eromonsele
+              {authUser?.user.last_name}
             </h3>
             <p className="font-medium pb-[8px] text-base text-[#8F9198]">
               Analyst Talent Manager
@@ -81,7 +83,9 @@ const AdminProfile = () => {
                   </figure>
                   <p className="font-medium text-sm text-[#352929]">YOUR ID</p>
                 </div>
-                <p className="font-medium text-sm text-[#3851DD]">A2023272</p>
+                <p className="font-medium text-sm text-[#3851DD]">
+                  {authUser?.unique_id}
+                </p>
               </div>
 
               <div className="flex items-center bg-[#E7F9F0] py-[8px] px-[5px] gap-2 rounded-md">
@@ -143,7 +147,7 @@ const AdminProfile = () => {
                   First Name
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Gloria
+                  {authUser?.user.last_name}
                 </h3>
               </div>
 
@@ -152,7 +156,7 @@ const AdminProfile = () => {
                   Last Name
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Eronmonsele
+                  {authUser?.user.first_name}
                 </h3>
               </div>
 
@@ -161,7 +165,7 @@ const AdminProfile = () => {
                   Middle Name
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Onosetale
+                  Frosh
                 </h3>
               </div>
             </div>
@@ -170,7 +174,7 @@ const AdminProfile = () => {
               <div className="flex flex-col gap-2">
                 <h2 className=" font-normal text-sm text-[#5E606A]">Gender</h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Female
+                  {authUser?.gender}
                 </h3>
               </div>
 
@@ -179,7 +183,7 @@ const AdminProfile = () => {
                   Marital status
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Single
+                  {authUser?.martial_status}
                 </h3>
               </div>
             </div>
@@ -205,7 +209,7 @@ const AdminProfile = () => {
                   Squad / Unit
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Talent Management
+                  Software Engineer
                 </h3>
               </div>
 
@@ -214,7 +218,7 @@ const AdminProfile = () => {
                   Designation
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Talent Manager
+                  {authUser?.role}
                 </h3>
               </div>
             </div>
@@ -229,7 +233,7 @@ const AdminProfile = () => {
               <div className="flex flex-col gap-2">
                 <h2 className=" font-normal text-sm text-[#5E606A]">Name</h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Sylvester Eromonsele
+                  {authUser?.next_of_kin_first_name}
                 </h3>
               </div>
 
@@ -238,7 +242,7 @@ const AdminProfile = () => {
                   Phone Number
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  +234 810 6545 067
+                  {authUser?.phone_number}
                 </h3>
               </div>
 
@@ -247,7 +251,7 @@ const AdminProfile = () => {
                   Email Address
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  seromonsele@gmail.com
+                  {authUser?.next_of_kin_email}
                 </h3>
               </div>
             </div>
@@ -256,7 +260,9 @@ const AdminProfile = () => {
               <h2 className=" font-normal text-sm text-[#5E606A]">
                 Relationship
               </h2>
-              <h3 className="font-semibold text-base text-[#5E606A]">Father</h3>
+              <h3 className="font-semibold text-base text-[#5E606A]">
+                {authUser?.next_of_kin_relationship}
+              </h3>
             </div>
           </div>
         </div>
@@ -264,4 +270,4 @@ const AdminProfile = () => {
     </div>
   );
 };
-export default AdminProfile;
+export default withAuth(AdminProfile);

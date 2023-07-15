@@ -50,10 +50,7 @@ export default function OtpPage() {
               style={{ boxShadow: "0px 4px 44px 0px rgba(0, 0, 0, 0.16)" }}
               className="w-[466px] bg-white rounded-2xl my-[50px]"
             >
-              {/* <Login /> */}
-              {/* <ForgetPassword /> */}
               <Otp />
-              {/* <ResetPassword /> */}
             </div>
           </section>
         </div>

@@ -7,7 +7,7 @@ interface IModalProps {
   close: () => void;
 }
 
-function EditTribeModal({ opened, close }: IModalProps) {
+function EditStaffModal({ opened, close }: IModalProps) {
   const [active, setActive] = useState(1);
 
   return (
@@ -15,7 +15,7 @@ function EditTribeModal({ opened, close }: IModalProps) {
       size={173}
       opened={opened}
       onClose={close}
-      title="Create Tribe"
+      title=""
       centered
       className="custom-modal"
       styles={{
@@ -39,26 +39,29 @@ function EditTribeModal({ opened, close }: IModalProps) {
       }}
     >
       {/* Modal content */}
-      <section>
+      <section className="flex flex-col gap-1">
         <div className="flex items-center gap-1">
-          <Image height={} width={} src={} alt="" />
-          <span>Update memeber</span>
+          <Image height={30} width={30} src={"/icons/edit-2.svg"} alt="" />
+          <span className="font-medium text-xs text-[#8F9198]">
+            Update memeber
+          </span>
         </div>
 
         <div className="flex items-center gap-1">
-          <Image height={} width={} src={} alt="" />
-          <span>View memeber</span>
+          <Image height={30} width={30} src={"/icons/eye.svg"} alt="" />
+          <span className="font-medium text-xs text-[#8F9198]">
+            View memeber
+          </span>
         </div>
 
         <div className="flex items-center gap-1">
-          <Image height={} width={} src={} alt="" />
-          <span>Activate memeber</span>
+          <Image height={30} width={30} src={"/icons/ticksquare.svg"} alt="" />
+          <span className="font-medium text-xs text-[#289061]">
+            Activate memeber
+          </span>
         </div>
       </section>
-      <button className="text-sm text-white bg-[#283A9D] rounded-lg py-[6px]  font-medium cursor-pointer w-full flex items-center justify-center mt-8">
-        <p>Create Tribe</p>
-      </button>
     </Modal>
   );
 }
-export default EditTribeModal;
+export default EditStaffModal;

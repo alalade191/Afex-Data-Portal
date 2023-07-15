@@ -18,7 +18,7 @@ function Tribemodal({ opened, close }: IModalProps) {
   const [tribemodal, setTribemodal] = useState<Itribe>({
     name: "",
     description: "",
-    tribe_lead: "",
+    // tribe_lead: "",
   });
 
   const leadget = async () => {
@@ -60,7 +60,7 @@ function Tribemodal({ opened, close }: IModalProps) {
           },
           body: JSON.stringify({
             ...tribemodal,
-            tribe_lead: +tribemodal.tribe_lead,
+            // tribe_lead: +tribemodal.tribe_lead,
           }),
         }
       );
@@ -139,7 +139,7 @@ function Tribemodal({ opened, close }: IModalProps) {
         }}
       />
 
-      <Select
+      {/* <Select
         label="Assign Tribe Lead"
         placeholder="Select Member"
         onChange={(value) =>
@@ -155,7 +155,7 @@ function Tribemodal({ opened, close }: IModalProps) {
             "h-[54px] outline-none pl-4 text-xs text-[#4A4C58] w-full rounded-lg border-[2px] border-[#DADADD]",
           label: "text-[#4A4C58] text-sm",
         }}
-      />
+      /> */}
       <button
         onClick={createTribe}
         className="text-sm text-white bg-[#283A9D] rounded-lg py-[6px]  font-medium cursor-pointer w-full flex items-center justify-center mt-8"

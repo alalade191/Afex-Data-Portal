@@ -64,7 +64,7 @@ const StaffManagement = () => {
           className="text-sm text-white bg-[#283A9D] rounded-lg py-[6px] px-[24px] font-medium
              transition-transform duration-300 transform-gpu hover:scale-105"
         >
-          Add member all
+          Add member
         </button>
         <SucessCard opened={successOpened} close={closeSuccess} />
         {/* <DeactivateCard opened={opened} close={close} /> */}

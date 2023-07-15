@@ -12,15 +12,27 @@ export default function UserProfile() {
     <div>
       <header className="w-full max-w-full py-[12px] border-b border-[#F0F0F1]">
         <div className="w-[95%] mx-auto flex items-center justify-between">
-          <figure className="h-[20px] w-[70px]">
-            <Image
-              height={29}
-              width={100}
-              src={"/images/login-logo.svg"}
-              alt="logo"
-              className="w-full h-full"
-            />
-          </figure>
+          <div className="flex gap-2 items-center">
+            <figure className="h-[20px] w-[70px]">
+              <Image
+                height={29}
+                width={100}
+                src={"/images/login-logo.svg"}
+                alt="logo"
+                className="w-full h-full"
+              />
+            </figure>
+
+            <figure className="h-[30px] ml-[105px]">
+              <Image
+                height={50}
+                width={100}
+                src={"/icons/profile.svg"}
+                alt="logo"
+                className="w-full h-full"
+              />
+            </figure>
+          </div>
           <div className="flex items-center gap-2 border-l border-[#F0F0F1] pl-[8px]">
             <figure className="h-[35px] w-[35px]  ">
               <Image
@@ -61,7 +73,7 @@ export default function UserProfile() {
               </figure>
               <div className="flex flex-col">
                 <h4 className="text-[14px] font-medium text-[#4A4C58]">
-                  {authUser?.first_name} {authUser?.last_name}
+                  {authUser?.user.first_name} {authUser?.user.last_name}
                 </h4>
                 <p className="text-[12px] font-normal text-[#8F9198]">Admin</p>
               </div>
@@ -75,11 +87,7 @@ export default function UserProfile() {
           <DashboardSidebar />
         </div>
         <div className="px-[28px] pt-[28px] bg-[#FDFDFD] ">
-          {/* <DashboardOverview /> */}
           <AdminProfile />
-          {/* <StaffManagement /> */}
-          {/* <Tribe /> */}
-          {/* <Office /> */}
         </div>
       </div>
     </div>

@@ -73,7 +73,7 @@ const Login: React.FC = () => {
           htmlFor="password"
           label="Password"
           name="password"
-          type="pasword"
+          type="password"
           placeholder="*************"
         />
         <Link
