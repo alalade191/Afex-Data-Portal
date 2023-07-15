@@ -4,7 +4,6 @@ import InputField from "@/components/input-field";
 import Image from "next/image";
 import Link from "next/link";
 import { PinInput, Group } from "@mantine/core";
-import Pin from "@/components/pininput";
 import OtpPin from "@/components/pin";
 import OtpInput from "react-otp-input";
 import { useRouter } from "next/navigation";
@@ -61,7 +60,7 @@ const Otp: React.FC = () => {
 
       <div>
         <OtpInput
-          value={otp}
+          value={String(otp)}
           onChange={setOtp}
           numInputs={6}
           inputType="tel"

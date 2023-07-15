@@ -74,7 +74,7 @@ function Address() {
               </figure>
               <div className="flex flex-col">
                 <h4 className="text-[14px] font-medium text-[#4A4C58]">
-                  {authUser?.first_name} {authUser?.last_name}
+                  {authUser.user.first_name} {authUser.user.last_name}
                 </h4>
                 <p className="text-[12px] font-normal text-[#8F9198]">Admin</p>
               </div>
