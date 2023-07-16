@@ -141,7 +141,7 @@ const AdminProfile = () => {
             <h2 className="pt-[10px] pb-[25px] text-[#4A4C58] font-medium text-xl">
               Personal Information
             </h2>
-            <div className="flex items-center justify-between">
+            <div className="grid grid-cols-3 gap-6">
               <div className="flex flex-col gap-2">
                 <h2 className=" font-normal text-sm text-[#5E606A]">
                   First Name
@@ -168,9 +168,6 @@ const AdminProfile = () => {
                   Frosh
                 </h3>
               </div>
-            </div>
-
-            <div className="flex justify-between w-[380px] max-w-[380px] pt-[55px]">
               <div className="flex flex-col gap-2">
                 <h2 className=" font-normal text-sm text-[#5E606A]">Gender</h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
@@ -194,7 +191,7 @@ const AdminProfile = () => {
             <h2 className="pt-[10px] pb-[25px] text-[#4A4C58] font-medium text-xl">
               Organization
             </h2>
-            <div className="flex items-center justify-between">
+            <div className="grid grid-cols-3 gap-6">
               <div className="flex flex-col gap-2">
                 <h2 className=" font-normal text-sm text-[#5E606A]">
                   Tribe / Department
@@ -229,7 +226,7 @@ const AdminProfile = () => {
             <h2 className="pt-[10px] pb-[25px] text-[#4A4C58] font-medium text-xl">
               Next of Kin
             </h2>
-            <div className="flex items-center justify-between gap-2">
+            <div className="grid grid-cols-3 gap-6">
               <div className="flex flex-col gap-2">
                 <h2 className=" font-normal text-sm text-[#5E606A]">Name</h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
@@ -254,15 +251,14 @@ const AdminProfile = () => {
                   {authUser?.next_of_kin_email}
                 </h3>
               </div>
-            </div>
-
-            <div className="flex flex-col pt-[12px]">
-              <h2 className=" font-normal text-sm text-[#5E606A]">
-                Relationship
-              </h2>
-              <h3 className="font-semibold text-base text-[#5E606A]">
-                {authUser?.next_of_kin_relationship}
-              </h3>
+              <div className="flex flex-col pt-[12px]">
+                <h2 className=" font-normal text-sm text-[#5E606A]">
+                  Relationship
+                </h2>
+                <h3 className="font-semibold text-base text-[#5E606A]">
+                  {authUser?.next_of_kin_relationship}
+                </h3>
+              </div>
             </div>
           </div>
         </div>

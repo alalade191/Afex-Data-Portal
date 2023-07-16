@@ -62,7 +62,7 @@ const SecondStepper = ({ secondState, setSecondState }: Data) => {
           />
         </div>
         {/* second */}
-        <div className="flex items-center justify-center gap-[6px]">
+        <div className="flex items-end space-x-[6px]">
           <TextInput
             placeholder="Username"
             label="Taggable Aliases"

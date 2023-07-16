@@ -41,6 +41,7 @@ const DashboardSidebar = () => {
     },
   ];
   const [selected, setSelected] = useState(0);
+
   const [adminselect, setAdminselect] = useState(null);
   const router = useRouter();
 
@@ -57,6 +58,7 @@ const DashboardSidebar = () => {
             key={list.text}
             onClick={() => {
               setSelected(i);
+              setAdminselect(null);
             }}
           >
             <div
@@ -97,6 +99,7 @@ const DashboardSidebar = () => {
                 return;
               }
               setAdminselect(i);
+              setSelected(null);
             }}
           >
             <div
