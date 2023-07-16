@@ -110,7 +110,7 @@ const Tribe = () => {
     </div>
   );
 };
-export default Tribe;
+export default withAuth(Tribe);
 function Tribedata() {
   throw new Error("Function not implemented.");
 }

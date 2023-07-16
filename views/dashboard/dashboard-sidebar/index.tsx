@@ -50,7 +50,7 @@ const DashboardSidebar = () => {
     console.log("logout");
   };
   return (
-    <div>
+    <div className="">
       <div className="flex flex-col gap-5 pt-8">
         {sidebarlist.map((list, i) => (
           <div

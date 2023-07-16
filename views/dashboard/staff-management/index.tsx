@@ -120,5 +120,4 @@ const StaffManagement = () => {
     </div>
   );
 };
-export default StaffManagement;
-// export default withAuth(StaffManagement);
+export default withAuth(StaffManagement);
