@@ -1,6 +1,6 @@
 import React from "react";
 interface Field {
-  label: string;
+  label?: string;
   name: string;
   type: string;
   placeholder: string;

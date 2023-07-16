@@ -7,8 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { AuthContext, IContextType } from "@/pages/_app";
-import { Loader } from "@mantine/core";
-import PersonalStepper from "@/modals/personal-stepper";
+import { PasswordInput } from "@mantine/core";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -68,14 +67,32 @@ const Login: React.FC = () => {
           placeholder="Enter email address"
         />
 
-        <InputField
+        {/* <InputField
           onChange={(passwordvalue) => setPassword(passwordvalue)}
           htmlFor="password"
           label="Password"
           name="password"
           type="password"
           placeholder="*************"
+        /> */}
+
+        <PasswordInput
+          placeholder="••••••••"
+          label="Password"
+          description=""
+          withAsterisk
+          value={password}
+          onChange={(event) => setPassword(event.currentTarget.value)}
+          required
+          classNames={{
+            root: "!focus:outline !focus:outline-0",
+            input:
+              "!h-[54px] !w-[386px] !mt-[20px]  !rounded-[8px] !outline-none !border-[#F0F0F1] !border !font-switzer !pl-[15px] !outline !outline-0 !focus:outline-0",
+            innerInput:
+              "!self-center !focus:outline-0 !h-full outline active:outline-0",
+          }}
         />
+
         <Link
           href="/forgotpassword"
           className="text-base font-semibold font-switzer text-[#BF2018] w-[386px] ont-switzer text-end"

@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { useDisclosure } from "@mantine/hooks";
 import { Button, Group, Modal, Stepper } from "@mantine/core";
 import FirstStepper from "./firststepper";
 import Image from "next/image";
 import SecondStepper from "./secondstepper";
 import ThirdStepper from "./thirdstepper";
 import axios from "axios";
-import { fileURLToPath } from "url";
-import { FileWithPath } from "react-dropzone";
+import { ScrollArea } from "@mantine/core";
 
 interface IModalProps {
   opened: boolean;
@@ -156,14 +154,18 @@ export function CreateCard({ opened, openSuccess, close }: IModalProps) {
           }}
         >
           <Stepper.Step completedIcon={<span>1</span>}>
-            <FirstStepper dataState={stepdata} SetDataState={SetStepdata} />
+            <ScrollArea h={450} type="never">
+              <FirstStepper dataState={stepdata} SetDataState={SetStepdata} />
+            </ScrollArea>
           </Stepper.Step>
 
           <Stepper.Step completedIcon={<span>2</span>}>
-            <SecondStepper
-              secondState={stepdata}
-              setSecondState={SetStepdata}
-            />
+            <ScrollArea h={450} type="never">
+              <SecondStepper
+                secondState={stepdata}
+                setSecondState={SetStepdata}
+              />
+            </ScrollArea>
           </Stepper.Step>
 
           <Stepper.Step completedIcon={<span>3</span>}>

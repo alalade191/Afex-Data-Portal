@@ -111,9 +111,9 @@
 .sidebar {
   height: calc(100vh - 63.8px);
 }
-/* .scroll-terminate::-webkit-scrollbar {
+.scroll-terminate::-webkit-scrollbar {
   display: none;
-} */
+}
 
 .edit-terminate::-webkit-scrollbar {
   display: none;
