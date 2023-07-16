@@ -4,6 +4,7 @@ import InputField from "@/components/input-field";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { PasswordInput } from "@mantine/core";
 
 const ResetPassword: React.FC = () => {
   const [first, setFirst] = useState("");
@@ -37,7 +38,6 @@ const ResetPassword: React.FC = () => {
   const handlesubmit = (e: FormEvent) => {
     e.preventDefault();
     resetpassword();
-    // console.log(passw);
   };
 
   return (
@@ -58,21 +58,56 @@ const ResetPassword: React.FC = () => {
         </p>
       </div>
 
-      <InputField
+      <PasswordInput
+        placeholder="Enter your new password"
+        label="New Password"
+        description=""
+        withAsterisk
+        value={first}
+        onChange={(event) => setFirst(event.currentTarget.value)}
+        required
+        classNames={{
+          root: "!focus:outline !focus:outline-0",
+          input:
+            "!h-[54px] !w-[386px] !mt-[20px]  !rounded-[8px] !outline-none !border-[#F0F0F1] !border !font-switzer !pl-[15px] !outline !outline-0 !focus:outline-0",
+          innerInput:
+            "!self-center !focus:outline-0 !h-full outline active:outline-0",
+        }}
+      />
+
+      {/* <InputField
         onChange={(emailvalue) => setFirst(emailvalue)}
         htmlFor="password"
         label="New Password"
         name="password"
         type="password"
         placeholder="Enter your new password"
-      />
-      <InputField
+      /> */}
+
+      {/* <InputField
         onChange={(emailvalue) => setSecond(emailvalue)}
         htmlFor="password"
         label="Confirm Password"
         name="password"
         type="password"
         placeholder="Re enter your new password"
+      /> */}
+
+      <PasswordInput
+        placeholder="Re enter your new password"
+        label="Confirm Password"
+        description=""
+        withAsterisk
+        value={second}
+        onChange={(event) => setSecond(event.currentTarget.value)}
+        required
+        classNames={{
+          root: "!focus:outline !focus:outline-0",
+          input:
+            "!h-[54px] !w-[386px] !mt-[20px]  !rounded-[8px] !outline-none !border-[#F0F0F1] !border !font-switzer !pl-[15px] !outline !outline-0 !focus:outline-0",
+          innerInput:
+            "!self-center !focus:outline-0 !h-full outline active:outline-0",
+        }}
       />
 
       <Button text="Submit" />

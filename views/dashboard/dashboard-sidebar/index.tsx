@@ -4,6 +4,7 @@ import { useState } from "react";
 import { clsx } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useTheme } from "next-themes";
 interface Sidebar {
   image: string;
   text: string;
@@ -79,7 +80,9 @@ const DashboardSidebar = () => {
               </figure>
               <div>
                 <Link href={list.link}>
-                  <p className="text-[14px] font-semibold">{list.text}</p>
+                  <p className="text-[14px] dark:text-[#1A212E] font-semibold">
+                    {list.text}
+                  </p>
                 </Link>
               </div>
             </div>
@@ -105,6 +108,7 @@ const DashboardSidebar = () => {
             <div
               className={clsx(
                 adminselect === i ? "bg-[#E1E5FA]" : "bg-transparent",
+                adminselect === i ? "text-[#3045BC]" : "bg-transparent",
                 "flex items-center gap-2 mx-auto w-[186px] p-[8px] rounded-lg"
               )}
             >

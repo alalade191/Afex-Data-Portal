@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-
+import { useTheme } from "next-themes";
+interface Table {
+  name: string;
+  email: string;
+  mobile: number;
+  tribe: string;
+  squad: string;
+}
 const DashboadTableList = ({ tableData }) => {
-  interface Table {
-    name: string;
-    email: string;
-    mobile: number;
-    tribe: string;
-    squad: string;
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [image, setImage] = useState(
+    <Image src={"/images/light-mode.svg"} alt={"moon"} height={50} width={30} />
+  );
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  {
+    if (!mounted) {
+      return null;
+    }
   }
 
   const tablelist: Table[] = [
@@ -82,7 +95,7 @@ const DashboadTableList = ({ tableData }) => {
       <table className="w-full">
         <thead>
           {/*Table Header */}
-          <tr className="px-[20px] py-[8px] text-base text-[#4A4C58] bg-[#DADADD] rounded-lg">
+          <tr className="px-[20px] py-[8px] text-base dark:text-[#FFFFFF] dark:bg-[#232A37] text-[#4A4C58] bg-[#DADADD] rounded-lg">
             <th className="text-left py-3">Name</th>
             <th className="text-left py-3">Email Address</th>
             <th className="text-left py-3">Mobile Number</th>
@@ -96,7 +109,7 @@ const DashboadTableList = ({ tableData }) => {
             return (
               <tr
                 key={i}
-                className="border-b text-[#4A4C58] leading-5 font-normal text-sm border-[#F0F0F1]"
+                className="border-b text-[#4A4C58] dark:text-[#C1C2C6] leading-5 font-normal text-sm border-[#F0F0F1]"
               >
                 <td className="py-3">{list.name}</td>
                 <td className="py-3">{list.email}</td>

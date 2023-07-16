@@ -37,7 +37,7 @@ const Authentication: React.FC = () => {
                 <h2 className="font-semibold text-2xl ont-switzer text-center text-[#5E606A] leading-[33px]">
                   Streamline your Login Experience with SSO{" "}
                 </h2>
-                <p className="font-normal text-base text-center text-[#8F9198] ont-switzer leading-[22px]">
+                <p className="font-normal text-base text-center text-[#8F9198] font-switzer leading-[22px]">
                   Welcome to our Single Sign-On login page! With just one set of
                   login credentials, you can now access all your favorite
                   applications and services without the need to enter multiple
@@ -51,10 +51,7 @@ const Authentication: React.FC = () => {
               style={{ boxShadow: "0px 4px 44px 0px rgba(0, 0, 0, 0.16)" }}
               className="w-[466px] bg-white rounded-2xl my-[50px]"
             >
-              {/* <Login /> */}
               <ForgetPassword />
-              {/* <Otp /> */}
-              {/* <ResetPassword /> */}
             </div>
           </section>
         </div>

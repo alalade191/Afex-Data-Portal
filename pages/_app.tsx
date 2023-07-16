@@ -37,10 +37,8 @@ export default function App({ Component, pageProps }: AppProps) {
   const [authUser, setAuthUser] = useState<IAuthUser | null>(null);
   let data = { authUser, setAuthUser };
   return (
-    <ThemeProvider attribute="class">
-      <AuthContext.Provider value={data}>
-        <Component {...pageProps} />
-      </AuthContext.Provider>
-    </ThemeProvider>
+    <AuthContext.Provider value={data}>
+      <Component {...pageProps} />
+    </AuthContext.Provider>
   );
 }

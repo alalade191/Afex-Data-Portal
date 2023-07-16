@@ -41,11 +41,11 @@ const DashboardOverview = () => {
       <Cards dashboardData={view} />
 
       <div className="flex items-center justify-between pt-[40px] pb-[30px]">
-        <h4 className="text-base font-semibold text-[#2C2F3C]">
+        <h4 className="text-base font-semibold text-[#2C2F3C] dark:text-[#FFFFFF]">
           Recently Uploaded Staff
         </h4>
         <div className="flex items-center  gap-2">
-          <p className="text-sm font-medium text-[#3045BC]">
+          <p className="text-sm font-medium text-[#3045BC] dark:text-[#3851DD]">
             <Link href={"/staff-management"}>View all staff</Link>
           </p>
           <figure className="w-[10px] h-[10px]">

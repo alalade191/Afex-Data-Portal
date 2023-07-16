@@ -14,7 +14,6 @@ import Tribe from "./tribe";
 import Office from "./office";
 
 const DashBoard = () => {
-  const { theme, setTheme } = useTheme();
   const { authUser } = useContext(AuthContext) as IContextType;
   return (
     <div>
@@ -41,13 +40,13 @@ const DashBoard = () => {
             </figure>
             <figure
               className="w-[35px] h-[35px]"
-              onClick={() => {
-                if (theme === "light") {
-                  setTheme("dark");
-                } else {
-                  setTheme("light");
-                }
-              }}
+              // onClick={() => {
+              //   if (theme === "light") {
+              //     setTheme("dark");
+              //   } else {
+              //     setTheme("light");
+              //   }
+              // }}
             >
               <Image
                 height={50}
