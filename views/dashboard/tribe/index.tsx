@@ -72,7 +72,7 @@ const Tribe = () => {
       {/* update of staff listt */}
 
       <div className="flex flex-1 items-center justify-center">
-        <div className="flex flex-col items-center justify-center">
+        {/* <div className="flex flex-col items-center justify-center">
           <figure className="w-[150px] h-[150px]">
             <Image
               height={30}
@@ -104,7 +104,7 @@ const Tribe = () => {
             <span>Create tribe</span>
           </button>
           <Tribemodal opened={opened} close={close} />
-        </div>
+        </div> */}
       </div>
       {/* <StaffList /> */}
     </div>
