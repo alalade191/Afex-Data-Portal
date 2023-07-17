@@ -15,7 +15,9 @@ const ActiveTribeTable = () => {
       />
       <EditTribeModal opened={opened} close={close} />
       <div className="bg-[#EBEEFC] flex gap-1 items-center border rounded-lg py-1 px-2">
-        <span className="text-sm font-normal text-[#3851DD]">View tribe</span>
+        <span className="text-sm font-normal whitespace-nowrap text-[#3851DD]">
+          View tribe
+        </span>
       </div>
     </div>
   );

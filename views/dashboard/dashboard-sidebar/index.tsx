@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { clsx } from "@mantine/core";
 import Link from "next/link";
@@ -10,6 +10,9 @@ interface Sidebar {
   text: string;
   link?: string;
 }
+
+type SetSelected = Dispatch<SetStateAction<string>>;
+
 const DashboardSidebar = () => {
   const sidebarlist: Sidebar[] = [
     {
@@ -28,9 +31,6 @@ const DashboardSidebar = () => {
       text: "Office Address",
       link: "/address",
     },
-
-    // { image: "/icons/user.svg", text: "Profile" },
-    // { image: "/icons/logout.svg", text: "Logout" },
   ];
   const adminlist: Sidebar[] = [
     { image: "/icons/user.svg", text: "Profile", link: "/profile" },
@@ -41,15 +41,15 @@ const DashboardSidebar = () => {
       link: "",
     },
   ];
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState("");
 
   const [adminselect, setAdminselect] = useState(null);
   const router = useRouter();
+  const { asPath } = useRouter();
 
   const Logout = () => {
     localStorage.clear();
     router.push("/landingpage");
-    console.log("logout");
   };
   return (
     <div className="">
@@ -58,14 +58,14 @@ const DashboardSidebar = () => {
           <div
             key={list.text}
             onClick={() => {
-              setSelected(i);
+              setSelected(list.link);
               setAdminselect(null);
             }}
           >
             <div
               className={clsx(
-                selected === i ? "bg-[#E1E5FA]" : "bg-transparent",
-                selected === i ? "text-[#3045BC]" : "bg-transparent",
+                list.link === asPath ? "bg-[#E1E5FA]" : "bg-transparent",
+                list.link === asPath ? "text-[#3045BC]" : "bg-transparent",
                 "flex items-center gap-2 mx-auto w-[186px] p-[8px] rounded-lg"
               )}
             >
@@ -101,14 +101,14 @@ const DashboardSidebar = () => {
                 Logout();
                 return;
               }
-              setAdminselect(i);
+              setAdminselect(admin.link);
               setSelected(null);
             }}
           >
             <div
               className={clsx(
-                adminselect === i ? "bg-[#E1E5FA]" : "bg-transparent",
-                adminselect === i ? "text-[#3045BC]" : "bg-transparent",
+                admin.link == asPath ? "bg-[#E1E5FA]" : "bg-transparent",
+                admin.link == asPath ? "text-[#3045BC]" : "bg-transparent",
                 "flex items-center gap-2 mx-auto w-[186px] p-[8px] rounded-lg"
               )}
             >

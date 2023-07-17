@@ -67,7 +67,7 @@ const AdminProfile = () => {
               {authUser?.user.last_name}
             </h3>
             <p className="font-medium pb-[8px] text-base text-[#8F9198]">
-              Analyst Talent Manager
+              {authUser?.role}
             </p>
             <div className="flex gap-3 items-center">
               <div className="flex items-center py-[8px] px-[5px] gap-2 bg-[#EBEEFC] rounded-md w-[165px] ">
@@ -165,7 +165,7 @@ const AdminProfile = () => {
                   Middle Name
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Frosh
+                  {authUser?.middle_name}
                 </h3>
               </div>
               <div className="flex flex-col gap-2">
@@ -197,7 +197,7 @@ const AdminProfile = () => {
                   Tribe / Department
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Corporate Services
+                  {authUser?.tribe}
                 </h3>
               </div>
 
@@ -206,7 +206,7 @@ const AdminProfile = () => {
                   Squad / Unit
                 </h2>
                 <h3 className="font-semibold text-base text-[#5E606A]">
-                  Software Engineer
+                  {authUser?.squad}
                 </h3>
               </div>
 

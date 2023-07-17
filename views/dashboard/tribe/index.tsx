@@ -42,7 +42,7 @@ const Tribe = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex overflow-auto flex-col h-full">
       <div className="flex items-center justify-between">
         <div className="flex gap-3">
           <Export />
@@ -71,8 +71,8 @@ const Tribe = () => {
 
       {/* update of staff listt */}
 
-      <div className="flex flex-1 items-center justify-center">
-        {/* <div className="flex flex-col items-center justify-center">
+      {/* <div className="flex flex-1 items-center justify-center"> */}
+      {/* <div className="flex flex-col items-center justify-center">
           <figure className="w-[150px] h-[150px]">
             <Image
               height={30}
@@ -105,8 +105,7 @@ const Tribe = () => {
           </button>
           <Tribemodal opened={opened} close={close} />
         </div> */}
-      </div>
-      {/* <StaffList /> */}
+      {/* </div> */}
     </div>
   );
 };

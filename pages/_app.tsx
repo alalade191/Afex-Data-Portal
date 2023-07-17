@@ -18,6 +18,9 @@ interface IAuthUser {
   middle_name: string;
   martial_status: string;
   role: string;
+  tribe: string;
+  squad: string;
+  date_created: string;
   phone_number: string;
   gender: string;
   next_of_kin_first_name: string;

@@ -68,30 +68,13 @@ const ResetPassword: React.FC = () => {
         required
         classNames={{
           root: "!focus:outline !focus:outline-0",
+          label: "text-[16px] text-[#4A4C58]",
           input:
             "!h-[54px] !w-[386px] !mt-[20px]  !rounded-[8px] !outline-none !border-[#F0F0F1] !border !font-switzer !pl-[15px] !outline !outline-0 !focus:outline-0",
           innerInput:
             "!self-center !focus:outline-0 !h-full outline active:outline-0",
         }}
       />
-
-      {/* <InputField
-        onChange={(emailvalue) => setFirst(emailvalue)}
-        htmlFor="password"
-        label="New Password"
-        name="password"
-        type="password"
-        placeholder="Enter your new password"
-      /> */}
-
-      {/* <InputField
-        onChange={(emailvalue) => setSecond(emailvalue)}
-        htmlFor="password"
-        label="Confirm Password"
-        name="password"
-        type="password"
-        placeholder="Re enter your new password"
-      /> */}
 
       <PasswordInput
         placeholder="Re enter your new password"
@@ -103,6 +86,7 @@ const ResetPassword: React.FC = () => {
         required
         classNames={{
           root: "!focus:outline !focus:outline-0",
+          label: "text-[16px] text-[#4A4C58]",
           input:
             "!h-[54px] !w-[386px] !mt-[20px]  !rounded-[8px] !outline-none !border-[#F0F0F1] !border !font-switzer !pl-[15px] !outline !outline-0 !focus:outline-0",
           innerInput:

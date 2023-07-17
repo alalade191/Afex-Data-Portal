@@ -24,50 +24,6 @@ const FirstStepper = ({ dataState, SetDataState }: Data) => {
         <p className="font-medium text-sm text-[#C1C2C6]">(Required)</p>
       </div>
 
-      {/* <Dropzone
-        onDrop={(files) => console.log("accepted files", files)}
-        onReject={(files) => console.log("rejected files", files)}
-        maxSize={3 * 1024 ** 2}
-        accept={IMAGE_MIME_TYPE}
-        styles={{
-          root: {
-            border: "2px dashed #DADADD",
-            "&:hover": {
-              border: "1px dashed #DADADD",
-            },
-          },
-        }}
-      >
-        <Group
-          className="flex flex-col"
-          position="center"
-          spacing="xl"
-          style={{ minHeight: px(40), pointerEvents: "none" }}
-        >
-          <Dropzone.Accept>
-            <IconUpload size="3.2rem" stroke={1.5} />
-          </Dropzone.Accept>
-          <Dropzone.Reject>
-            <IconX size="3rem" stroke={1.5} />
-          </Dropzone.Reject>
-          <Dropzone.Idle>
-            <div className="flex items-center gap-1 justify-center">
-              <Image
-                src={"/icons/image-upload.svg"}
-                alt={"image-upload"}
-                width={26}
-                height={26}
-              />
-              <p className="text-sm font-medium text-[#8F9198]">
-                Drop files to attach or{" "}
-                <span className="text-[#458EE6] ">
-                  <Link href={"https://www.google.com"}>browse</Link>
-                </span>
-              </p>
-            </div>
-          </Dropzone.Idle>
-        </Group>
-      </Dropzone> */}
       <Dropzone
         onDrop={(files) => {
           const reader = new FileReader();

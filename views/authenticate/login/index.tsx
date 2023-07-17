@@ -67,15 +67,6 @@ const Login: React.FC = () => {
           placeholder="Enter email address"
         />
 
-        {/* <InputField
-          onChange={(passwordvalue) => setPassword(passwordvalue)}
-          htmlFor="password"
-          label="Password"
-          name="password"
-          type="password"
-          placeholder="*************"
-        /> */}
-
         <PasswordInput
           placeholder="••••••••"
           label="Password"
@@ -86,6 +77,7 @@ const Login: React.FC = () => {
           required
           classNames={{
             root: "!focus:outline !focus:outline-0",
+            label: "text-[16px] text-[#4A4C58]",
             input:
               "!h-[54px] !w-[386px] !mt-[20px]  !rounded-[8px] !outline-none !border-[#F0F0F1] !border !font-switzer !pl-[15px] !outline !outline-0 !focus:outline-0",
             innerInput:

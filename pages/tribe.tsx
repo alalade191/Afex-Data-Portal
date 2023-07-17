@@ -10,7 +10,7 @@ export default function TribePage() {
   const { theme, setTheme } = useTheme();
   const { authUser } = useContext(AuthContext) as IContextType;
   return (
-    <div>
+    <div className="h-screen overflow-auto flex flex-col">
       <header className="w-full max-w-full py-[12px] border-b border-[#F0F0F1]">
         <div className="w-[95%] mx-auto flex items-center justify-between">
           <div className="flex gap-2 items-center">
@@ -83,11 +83,11 @@ export default function TribePage() {
         </div>
       </header>
       {/* Body style */}
-      <div className="grid grid-cols-[220px_1fr]">
+      <div className="grid flex-1 overflow-auto grid-cols-[220px_1fr]">
         <div className="sidebar bg-[#F6F8F9]">
           <DashboardSidebar />
         </div>
-        <div className="px-[28px] pt-[28px] bg-[#FDFDFD] ">
+        <div className="px-[28px] overflow-auto pt-[28px] bg-[#FDFDFD] ">
           <Tribe />
           {/* <TribeList /> */}
         </div>
