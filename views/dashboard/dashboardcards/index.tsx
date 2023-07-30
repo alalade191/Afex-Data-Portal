@@ -42,14 +42,14 @@ const Cards = ({ dashboardData }: { dashboardData: IDasboard }) => {
       number: dashboardData?.overall_tribe,
       firstimage: "/icons/second.svg",
       created: "Last created:",
-      days: "10d ago",
+      days: dashboardData?.last_created_tribe,
     },
     {
       header: "Overall number of Squads",
       number: dashboardData?.overall_squad,
       firstimage: "/icons/third.svg",
       created: "Last created:",
-      days: "10d ago",
+      days: dashboardData?.last_created_squad,
     },
   ];
 

@@ -12,6 +12,8 @@ export interface IDasboard {
   overall_staff: number;
   overall_tribe: number;
   recent_staff: any[];
+  last_created_tribe: string;
+  last_created_squad: string;
 }
 
 const DashboardOverview = () => {

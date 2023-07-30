@@ -95,27 +95,27 @@ const DashboadTableList = ({ tableData }) => {
       <table className="w-full">
         <thead>
           {/*Table Header */}
-          <tr className="px-[20px] py-[8px] text-base dark:text-[#FFFFFF] dark:bg-[#232A37] text-[#4A4C58] bg-[#DADADD] rounded-lg">
-            <th className="text-left py-3">Name</th>
-            <th className="text-left py-3">Email Address</th>
-            <th className="text-left py-3">Mobile Number</th>
-            <th className="text-left py-3">Tribe/Department</th>
-            <th className="text-left py-3">Squad/Unit</th>
+          <tr className="px-[20px] py-[8px] text-base dark:text-[#FFFFFF] dark:bg-[#232A37] text-[#4A4C58] bg-[#F5F5F6] rounded-lg">
+            <th className="text-left py-4 pl-5">Name</th>
+            <th className="text-left py-4 pl-5">Email Address</th>
+            <th className="text-left py-4 pl-5">Mobile Number</th>
+            <th className="text-left py-4 pl-5">Tribe/Department</th>
+            <th className="text-left py-4 pl-5">Squad/Unit</th>
           </tr>
         </thead>
         {/* Table Data */}
         <tbody>
-          {tableData?.map((list, i) => {
+          {tableData?.map((list) => {
             return (
               <tr
-                key={i}
+                key={list.name}
                 className="border-b text-[#4A4C58] dark:text-[#C1C2C6] leading-5 font-normal text-sm border-[#F0F0F1]"
               >
-                <td className="py-3">{list.name}</td>
-                <td className="py-3">{list.email}</td>
-                <td className="py-3">{list.phone_number}</td>
-                <td className="py-3">{list.tribe}</td>
-                <td className="py-3">{list.squad}</td>
+                <td className="py-4 pl-5">{list.name}</td>
+                <td className="py-4 pl-5">{list.email}</td>
+                <td className="py-4 pl-5">{list.phone_number}</td>
+                <td className="py-4 pl-5">{list.tribe}</td>
+                <td className="py-4 pl-5">{list.squad}</td>
               </tr>
             );
           })}

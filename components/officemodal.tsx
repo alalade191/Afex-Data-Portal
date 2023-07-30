@@ -18,6 +18,9 @@ function Officemodal({ opened, close }: IModalProps) {
       title="Add Address"
       centered
       className="custom-modal"
+      classNames={{
+        overlay: "!bg-[rgba(0,0,0,0.2)]",
+      }}
       styles={{
         root: {},
         content: {
