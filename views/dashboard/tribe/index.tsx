@@ -20,7 +20,7 @@ const Tribe = () => {
       const token = JSON.parse(localStorage.getItem("userlogin") as string)
         ?.tokens?.access;
       const res = await fetch(
-        "https://expertportal-production.up.railway.app/api/tribes/",
+        "https://web-production-029d.up.railway.app/api/tribes/",
         {
           method: "GET",
           headers: {
@@ -68,44 +68,6 @@ const Tribe = () => {
       </div>
 
       <TribeList tribe={tribe} />
-
-      {/* update of staff listt */}
-
-      {/* <div className="flex flex-1 items-center justify-center"> */}
-      {/* <div className="flex flex-col items-center justify-center">
-          <figure className="w-[150px] h-[150px]">
-            <Image
-              height={30}
-              width={30}
-              src={"/icons/staff-list.svg"}
-              alt="staff list"
-              className="w-full h-full"
-            />
-          </figure>
-          <div className="flex flex-col gap-2">
-            <h3 className="font-semibold text-center text-2xl text-[#5E606A]">
-              Tribe list empty
-            </h3>
-            <p className="font-normal text-sm text-[#5E606A] max-w-[260px] text-center">
-              You are yet to create any tribe
-            </p>
-          </div>
-          <button
-            onClick={open}
-            className="text-sm text-white bg-[#283A9D] rounded-lg py-[6px] mt-[20px] px-[24px] font-medium
-             transition-transform duration-300 transform-gpu hover:scale-105 flex gap-1 justify-center items-center"
-          >
-            <Image
-              height={20}
-              width={20}
-              src={"/icons/plus-icon.svg"}
-              alt="iconplus"
-            />
-            <span>Create tribe</span>
-          </button>
-          <Tribemodal opened={opened} close={close} />
-        </div> */}
-      {/* </div> */}
     </div>
   );
 };

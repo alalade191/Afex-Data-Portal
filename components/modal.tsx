@@ -86,7 +86,7 @@ export function CreateCard({ opened, openSuccess, close }: IModalProps) {
       formData.append(key, value);
     });
     axios({
-      url: "https://expertportal-production.up.railway.app/api/staff/create",
+      url: "https://web-production-029d.up.railway.app/staff/create",
       data: formData,
       headers: {
         Authorization: `Bearer ${token}`,

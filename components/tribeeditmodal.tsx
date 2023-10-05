@@ -24,7 +24,7 @@ function TribeModalEdit({ opened, close }: IModalProps) {
     const token = JSON.parse(localStorage.getItem("userlogin"))?.tokens?.access;
     try {
       const response = await fetch(
-        "https://expertportal-production.up.railway.app/api/staff/",
+        "https://web-production-029d.up.railway.app/api/staff/",
         {
           method: "GET",
           headers: {
@@ -50,7 +50,7 @@ function TribeModalEdit({ opened, close }: IModalProps) {
     const token = JSON.parse(localStorage.getItem("userlogin"))?.tokens?.access;
     try {
       const res = await fetch(
-        "https://expertportal-production.up.railway.app/api/tribes/create",
+        "https://web-production-029d.up.railway.app/api/tribes/create",
         {
           method: "POST",
           headers: {
