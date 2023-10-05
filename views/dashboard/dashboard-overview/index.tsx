@@ -22,7 +22,7 @@ const DashboardOverview = () => {
     const token = JSON.parse(localStorage.getItem("userlogin") as string)
       ?.tokens?.access;
     const res = await fetch(
-      "https://expertportal-production.up.railway.app/api/staff/dashboard/",
+      "https://web-production-029d.up.railway.app/api/staff/dashboard/",
       {
         method: "GET",
         headers: {

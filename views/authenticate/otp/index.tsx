@@ -15,7 +15,7 @@ const Otp: React.FC = () => {
   const verifypin = async () => {
     try {
       const res = await fetch(
-        "https://expertportal-production.up.railway.app/api/auth/verify-pin/",
+        "https://web-production-029d.up.railway.app/api/auth/verify-pin/",
         {
           method: "POST",
           headers: {

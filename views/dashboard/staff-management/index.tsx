@@ -35,7 +35,7 @@ const StaffManagement = () => {
     const token = JSON.parse(localStorage.getItem("userlogin") as string)
       ?.tokens?.access;
     const res = await fetch(
-      "https://expertportal-production.up.railway.app/api/staff/",
+      "https://web-production-029d.up.railway.app/api/staff/",
       {
         method: "GET",
         headers: {

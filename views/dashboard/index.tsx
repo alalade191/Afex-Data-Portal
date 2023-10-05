@@ -38,16 +38,7 @@ const DashBoard = () => {
                 className="w-full h-full"
               />
             </figure>
-            <figure
-              className="w-[35px] h-[35px]"
-              // onClick={() => {
-              //   if (theme === "light") {
-              //     setTheme("dark");
-              //   } else {
-              //     setTheme("light");
-              //   }
-              // }}
-            >
+            <figure className="w-[35px] h-[35px]">
               <Image
                 height={50}
                 width={30}

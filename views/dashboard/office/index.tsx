@@ -77,7 +77,7 @@ const Office = () => {
     const token = JSON.parse(localStorage.getItem("userlogin") as string)
       ?.tokens?.access;
     const res = await fetch(
-      "https://expertportal-production.up.railway.app/api/address/",
+      "https://web-production-029d.up.railway.app/api/address/",
       {
         method: "GET",
         headers: {

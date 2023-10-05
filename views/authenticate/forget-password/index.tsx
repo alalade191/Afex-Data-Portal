@@ -13,7 +13,7 @@ const ForgetPassword: React.FC = () => {
   const forgetpassword = async () => {
     try {
       const res = await fetch(
-        "https://expertportal-production.up.railway.app/api/auth/forget-password/",
+        "https://web-production-029d.up.railway.app/api/auth/forget-password/",
         {
           method: "POST",
           headers: {

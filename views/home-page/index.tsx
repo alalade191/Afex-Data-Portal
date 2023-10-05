@@ -6,16 +6,6 @@ import { clsx } from "@mantine/core";
 import { useTheme } from "next-themes";
 
 const Homepage: React.FC = () => {
-  // const { theme, setTheme } = useTheme();
-  // const [mounted, setMounted] = useState(false);
-  // useEffect(() => {
-  //   setMounted(true);
-  // }, []);
-  // {
-  //   if (!mounted) {
-  //     return null;
-  //   }
-  // }
   return (
     <div className="bg-[url('/images/homepage-background.png')] bg-no-repeat bg-cover h-screen w-screen object-cover flex flex-col">
       <Header />

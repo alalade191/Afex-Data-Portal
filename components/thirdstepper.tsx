@@ -6,6 +6,7 @@ import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import Link from "next/link";
 import { Idata } from "./modal";
+import { json } from "stream/consumers";
 
 interface Data {
   thirdState: Idata;

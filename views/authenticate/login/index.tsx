@@ -8,18 +8,19 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { AuthContext, IContextType } from "@/pages/_app";
 import { PasswordInput } from "@mantine/core";
+import AuthLayout from "@/layout/auth";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
   const { setAuthUser } = useContext(AuthContext) as IContextType;
-  //  const[]= useState('')
+
   const router = useRouter();
   const login = async () => {
     try {
       const resp = await fetch(
-        "https://expertportal-production.up.railway.app/api/auth/login/",
+        "https://web-production-029d.up.railway.app/api/auth/login/",
         {
           method: "POST",
           headers: {
@@ -48,7 +49,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <>
+    <AuthLayout>
       <ToastContainer toastClassName="customToast" />
       <form
         onSubmit={handleSubmit}
@@ -93,7 +94,7 @@ const Login: React.FC = () => {
         </Link>
         <Button text="Sign in" />
       </form>
-    </>
+    </AuthLayout>
   );
 };
 export default Login;
